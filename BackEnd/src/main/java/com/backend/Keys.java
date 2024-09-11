@@ -1,10 +1,13 @@
 package com.backend;
 
-import com.backend.database.MongoDBRepository;
 import io.javalin.config.Key;
 
+import java.sql.Connection;
+
 public enum Keys {
-    MONGO_DB(new Key<MongoDBRepository>("mongo_db"));
+    MONGO_DB(new Key<MongoDBRepository>("mongo_db")),
+    SQL_DB(new Key<Connection>("sql_db"));
+
 
     private final Key<?> k;
 

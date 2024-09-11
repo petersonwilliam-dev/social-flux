@@ -1,17 +1,15 @@
 package com.backend;
 
-import com.backend.database.MongoDBRepository;
+import com.backend.database.SQLDBRepository;
 import io.javalin.Javalin;
 import io.javalin.config.JavalinConfig;
 import io.javalin.http.staticfiles.Location;
-import io.javalin.rendering.template.JavalinThymeleaf;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
 import java.util.Properties;
 import java.util.function.Consumer;
 
@@ -20,9 +18,12 @@ public class App {
     private static final Logger logger = LogManager.getLogger();
     private static final String PORTA_SERVIDOR = "porta.servidor";
     private static final String CONNECTION_STRING = "mongodb.connectionString";
+    private static final String SQL_URL = "sqldb.url";
+    private static final String USERNAME = "sqldb.username";
+    private static final String PASSWORD = "sqldb.password";
 
     private final Properties properties;
-    private MongoDBRepository mongoDBRepository;
+    private Connection connection;
 
     public App() {this.properties = getProperties();}
 
@@ -36,7 +37,7 @@ public class App {
         });
     }
 
-    private void registrarServicos(JavalinConfig config, MongoDBRepository mongoDBRepository) {
+    private void registrarServicos(JavalinConfig config, Connection connection) {
 
     }
 
@@ -48,18 +49,17 @@ public class App {
     }
 
     private void configureJavalin(JavalinConfig config) {
-        TemplateEngine templateEngine = configurarThymeleaf();
 
         config.events(event -> {
            event.serverStarted(() -> {
-               mongoDBRepository = iniciarMongoRepository();
-               config.appData(Keys.MONGO_DB.key(), mongoDBRepository);
+               connection = iniciarSQLRepository();
+               config.appData(Keys.SQL_DB.key(), connection);
            });
            event.serverStopped(() -> {
-               if (mongoDBRepository == null) {
+               if (connection == null) {
                    logger.error("A conexão não devia estar nula ao encerrar a aplicação");
                } else {
-                   mongoDBRepository.close();
+                   connection.close();
                    logger.info("Conexão encerrada com sucesso");
                }
            });
@@ -68,37 +68,23 @@ public class App {
             staticFileConfig.directory = "/public";
             staticFileConfig.location = Location.CLASSPATH;
         });
-        config.fileRenderer(new JavalinThymeleaf(templateEngine));
     }
 
-    private MongoDBRepository iniciarMongoRepository() {
-        String connectionString = properties.getProperty(CONNECTION_STRING);
-        logger.info("Recuperando String de acesso ao mongo");
-        if (connectionString == null) {
-            logger.error("String de conexão não foi definida no arquivo application.properties");
+    private Connection iniciarSQLRepository() {
+        String sqlURL = properties.getProperty(SQL_URL);
+        String username = properties.getProperty(USERNAME);
+        String password = properties.getProperty(PASSWORD);
+        if (sqlURL == null || username == null || password == null) {
+            logger.error("Defina os parâmetros para conexão no application.properties");
             System.exit(1);
         }
-        logger.info("Conectando ao mongo");
-        MongoDBRepository mongoDBRepository = new MongoDBRepository(connectionString);
-        if (mongoDBRepository.conectado("config")) {
-            logger.info("Conexão realizada com sucesso");
-        } else {
-            logger.error("Falha ao realizar a conexão com o mongo");
+        logger.info("Conectando ao banco de dados SQL");
+        Connection connection = SQLDBRepository.getConnection(sqlURL, username, password);
+        if (connection == null) {
+            logger.error("Não foi possível recuperar a conexão com o banco de dados");
             System.exit(1);
         }
-        return mongoDBRepository;
-    }
-
-    private TemplateEngine configurarThymeleaf() {
-        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-        templateResolver.setPrefix("/templates/");
-        templateResolver.setSuffix(".html");
-        templateResolver.setTemplateMode("HTML");
-        templateResolver.setCharacterEncoding("UTF-8");
-
-        TemplateEngine templateEngine = new TemplateEngine();
-        templateEngine.setTemplateResolver(templateResolver);
-        return templateEngine;
+        return connection;
     }
 
     private int getPortaServidor() {

@@ -7,7 +7,7 @@
     "dev": "vite",
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "vite",
-    "start:backend": "cd ../../BackEnd && mvn clean compile exec:java",
+    "start:backend": "cd ../BackEnd && mvn clean compile exec:java",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

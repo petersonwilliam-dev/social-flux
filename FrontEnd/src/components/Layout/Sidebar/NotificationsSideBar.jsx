@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom"
-import Notification from "./Notification"
-import useUserNotifications from "../../hooks/useUserNotifications"
-import ListNotifications from "../NotificationSidebar/ListNotifications"
+import useUserNotifications from "../../../hooks/useUserNotifications"
+import ListNotifications from "../../Notifications/ListNotifications"
 
-function NotificationsSidebar({showSidebarMain, user}) {
+function NotificationsSidebar({showSidebarMenu, user}) {
 
     const {userNotifications, viewNotifications} = useUserNotifications(user)
 
@@ -12,7 +11,7 @@ function NotificationsSidebar({showSidebarMain, user}) {
             <div className="text-start w-100 mb-4 ps-3">
                 <Link onClick={() => {
                     viewNotifications()
-                    showSidebarMain()
+                    showSidebarMenu()
                 }} className="nav-link d-flex justify-content-start align-items-center"><ion-icon name="chevron-back-outline"></ion-icon>Voltar</Link>
             </div>
             <ListNotifications notifications={userNotifications}/>

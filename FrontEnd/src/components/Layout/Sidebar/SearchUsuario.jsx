@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
-import CardUsuarioSearch from "../CardUsuarioSearch/CardUsuarioSearch"
+import CardUsuarioSearch from "../../CardUsuarioSearch/CardUsuarioSearch"
 
-function SearchUsuario({showSidebarMain, usuariosPesquisados, setSearch, search, user}) {
+function SearchUsuario({showSidebarMenu, usuariosPesquisados, setSearch, search, user}) {
     return (
         <div className="mb-auto">
             <div className="text-start w-100 mb-4 ps-3">
-                <Link onClick={showSidebarMain} className="nav-link d-flex justify-content-start align-items-center"><ion-icon name="chevron-back-outline"></ion-icon>Voltar</Link>
+                <Link onClick={showSidebarMenu} className="nav-link d-flex justify-content-start align-items-center"><ion-icon name="chevron-back-outline"></ion-icon>Voltar</Link>
             </div>
             <div className="search">
                 <div className="mb-4 px-3">

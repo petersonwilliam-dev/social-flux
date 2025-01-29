@@ -42,6 +42,22 @@
     color: #fff;
 }
 
+.small-header {
+    background: #fff;
+}
+
+.small-header a {
+    color: #222;
+}
+
+.small-header.dark {
+    background: #292929;
+}
+
+.small-header.dark a {
+    color: #fff;
+}
+
 @media (max-width: 992px) {
     .ajustavel-1 {
         font-size: 7vw;

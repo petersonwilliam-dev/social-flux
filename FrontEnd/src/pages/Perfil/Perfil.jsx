@@ -53,7 +53,7 @@ function Perfil({observerDarkMode, setObserverDarkMode}) {
         <>
             {userProfile ? (
                 <div className="perfil ">
-                    <div className="w-100 px-2 d-flex justify-content-between">
+                    <div className="w-100 d-flex justify-content-between">
                         <ButtonBack />
                         <Link to="/settings" className="d-flex d-lg-none icon-settings"><ion-icon name="settings-outline"></ion-icon></Link>
                     </div>

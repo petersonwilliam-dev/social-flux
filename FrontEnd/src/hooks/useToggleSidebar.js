@@ -14,7 +14,7 @@ function useToggleSidebar() {
         setToggleNotifications(false)
     }
 
-    function showSidebarMain() {
+    function showSidebarMenu() {
         setToggleSidebar(true)
         setToggleListaRelacoesNaoAceitas(false)
         setToggleSearchUsuario(false)
@@ -35,7 +35,7 @@ function useToggleSidebar() {
         setToggleNotifications(true)
     }
 
-    return {toggleSidebar, toggleSearchUsuario, toggleListaRelacoesNaoAceitas, toggleNotifications, showListaRelacoesNaoAceitas, showSearchUsuarios, showSidebarMain, showNotifications}
+    return {toggleSidebar, toggleSearchUsuario, toggleListaRelacoesNaoAceitas, toggleNotifications, showListaRelacoesNaoAceitas, showSearchUsuarios, showSidebarMenu, showNotifications}
 }
 
 export default useToggleSidebar

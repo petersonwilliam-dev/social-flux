@@ -4,7 +4,7 @@ import MenuNotifications from '../../components/Notifications/MenuNotifications'
 import toggleNotificationsPage from '../../hooks/toggleNotificationPage'
 
 import "../../styles/NotificationsPage.css"
-import ListNotifications from '../../components/NotificationSidebar/ListNotifications'
+import ListNotifications from "../../components/Notifications/ListNotifications"
 import ListaRelacoesNaoAceitas from '../../components/Relacao/ListaRelcoesNaoAceitas'
 import useRelacao from '../../hooks/useRelacao'
 import { useEffect } from 'react'

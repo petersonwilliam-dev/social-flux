@@ -274,10 +274,10 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'biografia' in 'fiel
 2024-11-09 14:33:15 ERROR AmizadeController:123 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "ruanricardo"
 2024-11-09 14:33:20 ERROR AmizadeController:123 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "ruanricardo"
 2024-11-09 14:33:21 ERROR AmizadeController:123 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "ruanricardo"
-2024-11-09 14:33:23 ERROR AmizadeService:29 - Erro ao criar amizade: java.sql.SQLSyntaxErrorException: Unknown column 'seguidor' in 'field list'
+2024-11-09 14:33:23 ERROR AmizadeService:29 - Erro ao criar relacao: java.sql.SQLSyntaxErrorException: Unknown column 'seguidor' in 'field list'
 2024-11-09 14:33:23 ERROR App:41 - Erro não tratado {}
 java.lang.RuntimeException: java.sql.SQLSyntaxErrorException: Unknown column 'seguidor' in 'field list'
-	at com.backend.services.AmizadeService.criarAmizade(AmizadeService.java:30) ~[classes/:?]
+	at com.backend.services.RelacaoService.criarAmizade(AmizadeService.java:30) ~[classes/:?]
 	at com.backend.controllers.AmizadeController.criarAmizade(AmizadeController.java:39) ~[classes/:?]
 	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.2.0.jar:6.2.0]
 	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.2.0.jar:6.2.0]
@@ -325,13 +325,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'seguidor' in 'field
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.backend.dao.AmizadeDao.criarRelacao(AmizadeDao.java:23) ~[classes/:?]
-	at com.backend.services.AmizadeService.criarAmizade(AmizadeService.java:27) ~[classes/:?]
+	at com.backend.dao.RelacaoDao.criarRelacao(AmizadeDao.java:23) ~[classes/:?]
+	at com.backend.services.RelacaoService.criarAmizade(AmizadeService.java:27) ~[classes/:?]
 	... 42 more
 2024-11-09 14:35:09 ERROR AmizadeService:53 - Erro ao buscar amizades pendentes: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
 2024-11-09 14:35:09 ERROR App:41 - Erro não tratado {}
 java.lang.RuntimeException: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
 	at com.backend.controllers.AmizadeController.buscarAmizadesNaoAceitas(AmizadeController.java:120) ~[classes/:?]
 	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.2.0.jar:6.2.0]
 	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.2.0.jar:6.2.0]
@@ -374,13 +374,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.backend.dao.AmizadeDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
+	at com.backend.dao.RelacaoDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
 	... 37 more
 2024-11-09 14:35:12 ERROR AmizadeService:53 - Erro ao buscar amizades pendentes: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
 2024-11-09 14:35:12 ERROR App:41 - Erro não tratado {}
 java.lang.RuntimeException: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
 	at com.backend.controllers.AmizadeController.buscarAmizadesNaoAceitas(AmizadeController.java:120) ~[classes/:?]
 	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.2.0.jar:6.2.0]
 	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.2.0.jar:6.2.0]
@@ -428,13 +428,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.backend.dao.AmizadeDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
+	at com.backend.dao.RelacaoDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
 	... 42 more
 2024-11-09 14:36:44 ERROR AmizadeService:53 - Erro ao buscar amizades pendentes: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
 2024-11-09 14:36:44 ERROR App:41 - Erro não tratado {}
 java.lang.RuntimeException: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
 	at com.backend.controllers.AmizadeController.buscarAmizadesNaoAceitas(AmizadeController.java:120) ~[classes/:?]
 	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.2.0.jar:6.2.0]
 	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.2.0.jar:6.2.0]
@@ -477,13 +477,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.backend.dao.AmizadeDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
+	at com.backend.dao.RelacaoDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
 	... 37 more
 2024-11-09 14:41:52 ERROR AmizadeService:53 - Erro ao buscar amizades pendentes: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
 2024-11-09 14:41:52 ERROR App:41 - Erro não tratado {}
 java.lang.RuntimeException: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
 	at com.backend.controllers.AmizadeController.buscarAmizadesNaoAceitas(AmizadeController.java:120) ~[classes/:?]
 	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.2.0.jar:6.2.0]
 	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.2.0.jar:6.2.0]
@@ -526,13 +526,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.backend.dao.AmizadeDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
+	at com.backend.dao.RelacaoDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
 	... 37 more
 2024-11-09 14:42:46 ERROR AmizadeService:53 - Erro ao buscar amizades pendentes: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
 2024-11-09 14:42:46 ERROR App:41 - Erro não tratado {}
 java.lang.RuntimeException: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
 	at com.backend.controllers.AmizadeController.buscarAmizadesNaoAceitas(AmizadeController.java:120) ~[classes/:?]
 	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.2.0.jar:6.2.0]
 	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.2.0.jar:6.2.0]
@@ -580,13 +580,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.backend.dao.AmizadeDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
+	at com.backend.dao.RelacaoDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
 	... 42 more
 2024-11-09 14:43:10 ERROR AmizadeService:53 - Erro ao buscar amizades pendentes: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
 2024-11-09 14:43:10 ERROR App:41 - Erro não tratado {}
 java.lang.RuntimeException: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
 	at com.backend.controllers.AmizadeController.buscarAmizadesNaoAceitas(AmizadeController.java:120) ~[classes/:?]
 	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.2.0.jar:6.2.0]
 	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.2.0.jar:6.2.0]
@@ -634,13 +634,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.backend.dao.AmizadeDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
+	at com.backend.dao.RelacaoDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
 	... 42 more
 2024-11-09 14:48:00 ERROR AmizadeService:53 - Erro ao buscar amizades pendentes: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
 2024-11-09 14:48:00 ERROR App:41 - Erro não tratado {}
 java.lang.RuntimeException: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
 	at com.backend.controllers.AmizadeController.buscarAmizadesNaoAceitas(AmizadeController.java:120) ~[classes/:?]
 	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.2.0.jar:6.2.0]
 	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.2.0.jar:6.2.0]
@@ -683,13 +683,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.backend.dao.AmizadeDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
+	at com.backend.dao.RelacaoDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
 	... 37 more
 2024-11-09 14:52:49 ERROR AmizadeService:53 - Erro ao buscar amizades pendentes: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
 2024-11-09 14:52:49 ERROR App:41 - Erro não tratado {}
 java.lang.RuntimeException: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in 'on clause'
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:54) ~[classes/:?]
 	at com.backend.controllers.AmizadeController.buscarAmizadesNaoAceitas(AmizadeController.java:120) ~[classes/:?]
 	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.2.0.jar:6.2.0]
 	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.2.0.jar:6.2.0]
@@ -732,8 +732,8 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.backend.dao.AmizadeDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
-	at com.backend.services.AmizadeService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
+	at com.backend.dao.RelacaoDao.amizadesNaoAceitas(AmizadeDao.java:81) ~[classes/:?]
+	at com.backend.services.RelacaoService.amizadesNaoAceitas(AmizadeService.java:46) ~[classes/:?]
 	... 37 more
 2024-11-09 14:53:15 INFO  App:54 - Iniciando aplicação na porta 8000
 2024-11-09 14:53:15 INFO  Javalin:16 - Starting Javalin ...
@@ -840,10 +840,10 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'relacao.seguido' in
 2024-11-09 15:26:01 INFO  Javalin:16 - Listening on http://localhost:8000/
 2024-11-09 15:26:01 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 111 days old. Consider checking for a newer version.).
 2024-11-09 15:26:01 INFO  App:90 - Conectando ao banco de dados SQL
-2024-11-09 15:32:48 ERROR AmizadeService:29 - Erro ao criar amizade: java.sql.SQLSyntaxErrorException: Unknown column 'seguidor' in 'field list'
+2024-11-09 15:32:48 ERROR AmizadeService:29 - Erro ao criar relacao: java.sql.SQLSyntaxErrorException: Unknown column 'seguidor' in 'field list'
 2024-11-09 15:32:48 ERROR App:41 - Erro não tratado {}
 java.lang.RuntimeException: java.sql.SQLSyntaxErrorException: Unknown column 'seguidor' in 'field list'
-	at com.backend.services.AmizadeService.criarAmizade(AmizadeService.java:30) ~[classes/:?]
+	at com.backend.services.RelacaoService.criarAmizade(AmizadeService.java:30) ~[classes/:?]
 	at com.backend.controllers.AmizadeController.criarAmizade(AmizadeController.java:39) ~[classes/:?]
 	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.2.0.jar:6.2.0]
 	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.2.0.jar:6.2.0]
@@ -891,8 +891,8 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'seguidor' in 'field
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.backend.dao.AmizadeDao.criarRelacao(AmizadeDao.java:23) ~[classes/:?]
-	at com.backend.services.AmizadeService.criarAmizade(AmizadeService.java:27) ~[classes/:?]
+	at com.backend.dao.RelacaoDao.criarRelacao(AmizadeDao.java:23) ~[classes/:?]
+	at com.backend.services.RelacaoService.criarAmizade(AmizadeService.java:27) ~[classes/:?]
 	... 42 more
 2024-11-09 15:35:37 INFO  App:54 - Iniciando aplicação na porta 8000
 2024-11-09 15:35:38 INFO  Javalin:16 - Starting Javalin ...
@@ -7980,3 +7980,116 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2025-01-28 22:05:57 INFO  Javalin:16 - Listening on http://localhost:8000/
 2025-01-28 22:05:57 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 191 days old. Consider checking for a newer version.).
 2025-01-28 22:05:57 INFO  App:88 - Conectando ao banco de dados SQL
+2025-01-29 12:42:23 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-01-29 12:42:24 INFO  Javalin:16 - Starting Javalin ...
+2025-01-29 12:42:24 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-01-29 12:42:24 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-01-29 12:42:24 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@497bc0e5{/,null,AVAILABLE}
+2025-01-29 12:42:24 INFO  AbstractConnector:376 - Started ServerConnector@56e1a71{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-01-29 12:42:24 INFO  Server:439 - Started Server@16a2375c{STARTING}[11.0.21,sto=0] @9121ms
+2025-01-29 12:42:24 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-01-29 12:42:24 INFO  Javalin:16 - Javalin started in 529ms \o/
+2025-01-29 12:42:24 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-01-29 12:42:24 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-01-29 12:42:24 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 192 days old. Consider checking for a newer version.).
+2025-01-29 12:42:24 INFO  App:88 - Conectando ao banco de dados SQL
+2025-01-29 12:42:25 ERROR SQLDBRepository:82 - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'usuario (id int NOT NULL PRIMARY KEY AUTO_INCREMENT, username varchar(255) NOT N' at line 1
+2025-01-29 12:42:25 ERROR App:91 - Não foi possível recuperar a conexão com o banco de dados
+2025-01-29 12:43:03 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-01-29 12:43:03 INFO  Javalin:16 - Starting Javalin ...
+2025-01-29 12:43:03 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-01-29 12:43:03 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-01-29 12:43:03 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@7ff17fcd{/,null,AVAILABLE}
+2025-01-29 12:43:04 INFO  AbstractConnector:376 - Started ServerConnector@12b5d1a5{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-01-29 12:43:04 INFO  Server:439 - Started Server@17e25a65{STARTING}[11.0.21,sto=0] @7764ms
+2025-01-29 12:43:04 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-01-29 12:43:04 INFO  Javalin:16 - Javalin started in 313ms \o/
+2025-01-29 12:43:04 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-01-29 12:43:04 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-01-29 12:43:04 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 192 days old. Consider checking for a newer version.).
+2025-01-29 12:43:04 INFO  App:88 - Conectando ao banco de dados SQL
+2025-01-29 12:43:04 ERROR SQLDBRepository:82 - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE TABLE IF NOT EXISTS relacao (id int NOT NULL PRIMARY KEY AUTO_INCREMENT, ' at line 1
+2025-01-29 12:43:04 ERROR App:91 - Não foi possível recuperar a conexão com o banco de dados
+2025-01-29 12:50:44 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-01-29 12:50:44 INFO  Javalin:16 - Starting Javalin ...
+2025-01-29 12:50:44 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-01-29 12:50:44 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-01-29 12:50:44 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@5cae9aca{/,null,AVAILABLE}
+2025-01-29 12:50:44 INFO  AbstractConnector:376 - Started ServerConnector@17938ba8{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-01-29 12:50:44 INFO  Server:439 - Started Server@15d71ee2{STARTING}[11.0.21,sto=0] @6919ms
+2025-01-29 12:50:44 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-01-29 12:50:44 INFO  Javalin:16 - Javalin started in 308ms \o/
+2025-01-29 12:50:44 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-01-29 12:50:44 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-01-29 12:50:44 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 192 days old. Consider checking for a newer version.).
+2025-01-29 12:50:44 INFO  App:88 - Conectando ao banco de dados SQL
+2025-01-29 12:50:45 ERROR SQLDBRepository:82 - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE TABLE IF NOT EXISTS relacao (id int NOT NULL PRIMARY KEY AUTO_INCREMENT, ' at line 1
+2025-01-29 12:50:45 ERROR App:91 - Não foi possível recuperar a conexão com o banco de dados
+2025-01-29 15:04:28 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-01-29 15:04:29 INFO  Javalin:16 - Starting Javalin ...
+2025-01-29 15:04:29 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-01-29 15:04:29 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-01-29 15:04:29 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@55a69b7e{/,null,AVAILABLE}
+2025-01-29 15:04:29 INFO  AbstractConnector:376 - Started ServerConnector@196ff1c0{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-01-29 15:04:29 INFO  Server:439 - Started Server@2c2a0607{STARTING}[11.0.21,sto=0] @8840ms
+2025-01-29 15:04:29 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-01-29 15:04:29 INFO  Javalin:16 - Javalin started in 394ms \o/
+2025-01-29 15:04:29 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-01-29 15:04:29 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-01-29 15:04:29 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 192 days old. Consider checking for a newer version.).
+2025-01-29 15:04:29 INFO  App:88 - Conectando ao banco de dados SQL
+2025-01-29 15:04:30 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso
+2025-01-29 15:09:09 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-01-29 15:09:10 INFO  Javalin:16 - Starting Javalin ...
+2025-01-29 15:09:10 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-01-29 15:09:10 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-01-29 15:09:10 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@33242c8{/,null,AVAILABLE}
+2025-01-29 15:09:10 INFO  AbstractConnector:376 - Started ServerConnector@4d7694c2{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-01-29 15:09:10 INFO  Server:439 - Started Server@5cc02214{STARTING}[11.0.21,sto=0] @6994ms
+2025-01-29 15:09:10 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-01-29 15:09:10 INFO  Javalin:16 - Javalin started in 304ms \o/
+2025-01-29 15:09:10 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-01-29 15:09:10 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-01-29 15:09:10 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 192 days old. Consider checking for a newer version.).
+2025-01-29 15:09:10 INFO  App:88 - Conectando ao banco de dados SQL
+2025-01-29 15:09:10 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso

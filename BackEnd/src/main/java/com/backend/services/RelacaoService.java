@@ -1,7 +1,7 @@
 package com.backend.services;
 
-import com.backend.dao.AmizadeDao;
-import com.backend.model.entities.Amizade;
+import com.backend.dao.RelacaoDao;
+import com.backend.model.entities.Relacao;
 import com.backend.model.entities.Usuario;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,71 +12,71 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AmizadeService {
+public class RelacaoService {
 
     private static final Logger logger = LogManager.getLogger();
-    private final AmizadeDao amizadeDao;
+    private final RelacaoDao relacaoDao;
 
-    public AmizadeService(Connection connection) {
-        this.amizadeDao = new AmizadeDao(connection);
+    public RelacaoService(Connection connection) {
+        this.relacaoDao = new RelacaoDao(connection);
     }
 
-    public Integer criarAmizade(Amizade amizade) {
+    public Integer criarRelacao(Relacao relacao) {
         try {
-            if (amizadeExiste(amizade.getSeguidor().getId(), amizade.getSeguido().getId())) throw new IllegalArgumentException("Amizade já existe");
-            return amizadeDao.criarRelacao(amizade);
+            if (RelacaoExiste(relacao.getSeguidor().getId(), relacao.getSeguido().getId())) throw new IllegalArgumentException("Amizade já existe");
+            return relacaoDao.criarRelacao(relacao);
         } catch (SQLException e) {
             logger.error("Erro ao criar amizade: " + e);
             throw new RuntimeException(e);
         }
     }
 
-    public Amizade buscarAmizade(Integer idSeguidor, Integer idSeguido) {
-        try (ResultSet resultSet = amizadeDao.buscarRelacao(idSeguidor, idSeguido)) {
+    public Relacao buscarRelacao(Integer idSeguidor, Integer idSeguido) {
+        try (ResultSet resultSet = relacaoDao.buscarRelacao(idSeguidor, idSeguido)) {
             if (resultSet == null) return null;
-            return resultSetToAmizade(resultSet);
+            return resultSetToRelacao(resultSet);
         } catch (SQLException e) {
             logger.error("Erro ao buscar usuário: " + e);
             throw new RuntimeException(e);
         }
     }
 
-    public List<Amizade> amizadesNaoAceitas(Integer id) {
-        List<Amizade> listaAmizade = new ArrayList<>();
-        try (ResultSet resultSet = amizadeDao.amizadesNaoAceitas(id)) {
-            if (resultSet == null) return listaAmizade;
+    public List<Relacao> RelacoesNaoAceitas(Integer id) {
+        List<Relacao> listaRelacao = new ArrayList<>();
+        try (ResultSet resultSet = relacaoDao.RelacoesNaoAceitas(id)) {
+            if (resultSet == null) return listaRelacao;
             do {
-                listaAmizade.add(resultSetToAmizade(resultSet));
+                listaRelacao.add(resultSetToRelacao(resultSet));
             } while(resultSet.next());
-            return listaAmizade;
+            return listaRelacao;
         } catch (SQLException e) {
             logger.error("Erro ao buscar amizades pendentes: " + e);
             throw new RuntimeException(e);
         }
     }
 
-    public List<Amizade> seguidoresDoUsuario(Integer id) {
-        List<Amizade> listaAmizade = new ArrayList<>();
-        try (ResultSet resultSet = amizadeDao.seguidoresDoUsuario(id)) {
-            if (resultSet == null) return listaAmizade;
+    public List<Relacao> seguidoresDoUsuario(Integer id) {
+        List<Relacao> listaRelacao = new ArrayList<>();
+        try (ResultSet resultSet = relacaoDao.seguidoresDoUsuario(id)) {
+            if (resultSet == null) return listaRelacao;
             do {
-                listaAmizade.add(resultSetToAmizade(resultSet));
+                listaRelacao.add(resultSetToRelacao(resultSet));
             } while(resultSet.next());
-            return listaAmizade;
+            return listaRelacao;
         } catch (SQLException e) {
             logger.error("Erro ao buscar amizades pendentes: " + e);
             throw new RuntimeException(e);
         }
     }
 
-    public List<Amizade> seguidosDoUsuario(Integer id) {
-        List<Amizade> listaAmizade = new ArrayList<>();
-        try (ResultSet resultSet = amizadeDao.seguidosDoUsuario(id)) {
-            if (resultSet == null) return listaAmizade;
+    public List<Relacao> seguidosDoUsuario(Integer id) {
+        List<Relacao> listaRelacao = new ArrayList<>();
+        try (ResultSet resultSet = relacaoDao.seguidosDoUsuario(id)) {
+            if (resultSet == null) return listaRelacao;
             do {
-                listaAmizade.add(resultSetToAmizade(resultSet));
+                listaRelacao.add(resultSetToRelacao(resultSet));
             } while(resultSet.next());
-            return listaAmizade;
+            return listaRelacao;
         } catch (SQLException e) {
             logger.error("Erro ao buscar amizades pendentes: " + e);
             throw new RuntimeException(e);
@@ -85,7 +85,7 @@ public class AmizadeService {
 
     public Integer numeroSeguidores(Integer id) {
         try {
-            return amizadeDao.numeroSeguidores(id);
+            return relacaoDao.numeroSeguidores(id);
         } catch (SQLException e) {
             logger.error("Erro ao pegar quantidade de seguidores: " + e);
             throw new RuntimeException(e);
@@ -94,15 +94,15 @@ public class AmizadeService {
 
     public Integer numeroSeguidos(Integer id) {
         try {
-            return amizadeDao.numeroSeguidos(id);
+            return relacaoDao.numeroSeguidos(id);
         } catch (SQLException e) {
             logger.error("Erro ao pegar quantidade de seguidos: " + e);
             throw new RuntimeException(e);
         }
     }
 
-    public boolean amizadeExiste(Integer idSeguidor, Integer idSeguido) {
-        try (ResultSet resultSet = amizadeDao.buscarRelacao(idSeguidor, idSeguido)) {
+    public boolean RelacaoExiste(Integer idSeguidor, Integer idSeguido) {
+        try (ResultSet resultSet = relacaoDao.buscarRelacao(idSeguidor, idSeguido)) {
             return resultSet != null;
         } catch (SQLException e) {
             logger.error("Não foi possível buscar amizade: " + e);
@@ -110,25 +110,25 @@ public class AmizadeService {
         }
     }
 
-    public void removerAmizade(Integer id) {
+    public void removerRelacao(Integer id) {
         try {
-            amizadeDao.removerAmizade(id);
+            relacaoDao.removerRelacao(id);
         } catch (SQLException e) {
             logger.error("Erro ao remover amizade: " + e);
             throw new RuntimeException(e);
         }
     }
 
-    public void aceitarAmizade(Integer id) {
+    public void aceitarRelacao(Integer id) {
         try {
-            amizadeDao.aceitarAmizade(id);
+            relacaoDao.aceitarRelacao(id);
         } catch (SQLException e) {
             logger.error("Erro ao aceitar amizade : " + e);
             throw new RuntimeException();
         }
     }
 
-    private Amizade resultSetToAmizade(ResultSet resultSet) throws SQLException {
+    private Relacao resultSetToRelacao(ResultSet resultSet) throws SQLException {
         Usuario seguidor = new Usuario();
         seguidor.setId(resultSet.getInt("id_seguidor"));
         seguidor.setUsername(resultSet.getString("username_seguidor"));
@@ -143,7 +143,7 @@ public class AmizadeService {
         seguido.setPrivado(resultSet.getBoolean("privado_seguido"));
         seguido.setFoto_perfil(resultSet.getString("foto_seguido"));
 
-        return new Amizade(
+        return new Relacao(
                 resultSet.getInt("id"),
                 seguidor,
                 seguido,

@@ -1,14 +1,14 @@
 package com.backend.model.entities;
 
-public class Amizade {
+public class Relacao {
 
     private Integer id;
     private Usuario seguidor, seguido;
     private Boolean aceito;
 
-    public Amizade() {}
+    public Relacao() {}
 
-    public Amizade(Integer id, Usuario seguidor, Usuario seguido, Boolean aceito) {
+    public Relacao(Integer id, Usuario seguidor, Usuario seguido, Boolean aceito) {
         this.id = id;
         this.seguidor = seguidor;
         this.seguido = seguido;

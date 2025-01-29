@@ -1,26 +1,27 @@
 import { Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { logout } from "../../redux/reducer/userReducer"
-
-import '../../styles/SideBar.css'
-
-import ListaAmizadesNaoAceitas from '../Relacao/ListaAmizadesNaoAceitas'
-import foto_perfil_default from '../../assets/img/profile_photo_default.png'
-import SidebarMain from "../SidebarMain/SidebarMain"
-import SearchUsuario from "../SearchUsuario/SearchUsuario"
-import useToggleSidebar from "../../hooks/useToggleSidebar"
-import useSearchUsuario from "../../hooks/useSearchUsuario"
-import NotificationsSidebar from "../Notifications/NotificationsSideBar"
-import useUserNotifications from "../../hooks/useUserNotifications"
-import API_BASE_URL from "../../config/apiConfig"
-import useRelacao from "../../hooks/useRelacao"
+import { logout } from "../../../redux/reducer/userReducer"
 import { useEffect } from "react"
+
+import "../../../styles/Sidebar.css"
+
+import SidebarRelacoes from './SidebarRelacoes'
+import foto_perfil_default from "../../../assets/img/profile_photo_default.png"
+import SidebarMenu from "./SidebarMenu"
+import SearchUsuario from "./SearchUsuario"
+import useToggleSidebar from "../../../hooks/useToggleSidebar"
+import useSearchUsuario from "../../../hooks/useSearchUsuario"
+import NotificationsSidebar from "./NotificationsSideBar"
+import useUserNotifications from "../../../hooks/useUserNotifications"
+import API_BASE_URL from "../../../config/apiConfig"
+import useRelacao from "../../../hooks/useRelacao"
+
 
 function SideBar({user}) {
 
     const dispatch = useDispatch()    
     const {unacceptedRelationships,getUnacceptedRelationships, acceptRelationship, removeRelationship} = useRelacao()
-    const {toggleSidebar, toggleSearchUsuario, toggleListaRelacoesNaoAceitas, toggleNotifications, showListaRelacoesNaoAceitas, showSearchUsuarios, showSidebarMain, showNotifications} = useToggleSidebar()
+    const {toggleSidebar, toggleSearchUsuario, toggleListaRelacoesNaoAceitas, toggleNotifications, showListaRelacoesNaoAceitas, showSearchUsuarios, showSidebarMenu, showNotifications} = useToggleSidebar()
     const {setSearch, search, usuariosPesquisados} = useSearchUsuario()
     const {notificationsNotSeen, setNotificationsNotSeen} = useUserNotifications(user)
 
@@ -29,10 +30,10 @@ function SideBar({user}) {
     }, [])
 
     function renderSidebar() {
-        if (toggleSidebar) return <SidebarMain relacoesNaoAceitas={unacceptedRelationships} showListaRelacoesNaoAceitas={showListaRelacoesNaoAceitas} showSearchUsuarios={showSearchUsuarios} showNotifications={showNotifications} notificationsNotSeen={notificationsNotSeen} setNotificationsNotSeen={setNotificationsNotSeen} user={user}/>
-        if (toggleSearchUsuario) return <SearchUsuario showSidebarMain={showSidebarMain} setSearch={setSearch} usuariosPesquisados={usuariosPesquisados} search={search} user={user}/>
-        if (toggleListaRelacoesNaoAceitas) return <ListaAmizadesNaoAceitas relacoesNaoAceitas={unacceptedRelationships} showSidebarMain={showSidebarMain} aceitarRelacao={acceptRelationship} removerRelacao={removeRelationship} />
-        if (toggleNotifications) return <NotificationsSidebar showSidebarMain={showSidebarMain} user={user} />
+        if (toggleSidebar) return <SidebarMenu relacoesNaoAceitas={unacceptedRelationships} showListaRelacoesNaoAceitas={showListaRelacoesNaoAceitas} showSearchUsuarios={showSearchUsuarios} showNotifications={showNotifications} notificationsNotSeen={notificationsNotSeen} setNotificationsNotSeen={setNotificationsNotSeen} user={user}/>
+        if (toggleSearchUsuario) return <SearchUsuario showSidebarMenu={showSidebarMenu} setSearch={setSearch} usuariosPesquisados={usuariosPesquisados} search={search} user={user}/>
+        if (toggleListaRelacoesNaoAceitas) return <SidebarRelacoes relacoesNaoAceitas={unacceptedRelationships} showSidebarMenu={showSidebarMenu} aceitarRelacao={acceptRelationship} removerRelacao={removeRelationship} />
+        if (toggleNotifications) return <NotificationsSidebar showSidebarMenu={showSidebarMenu} user={user} />
     }
 
     return (

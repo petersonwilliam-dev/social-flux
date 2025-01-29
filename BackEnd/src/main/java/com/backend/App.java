@@ -41,7 +41,7 @@ public class App {
 
     private void registrarServicos(JavalinConfig config, Connection connection) {
         config.appData(Keys.USUARIO_SERVICE.key(), new UsuarioService(connection));
-        config.appData(Keys.AMIZADE_SERVICE.key(), new AmizadeService(connection));
+        config.appData(Keys.AMIZADE_SERVICE.key(), new RelacaoService(connection));
         config.appData(Keys.POSTAGEM_SERVICE.key(), new PostagemService(connection));
         config.appData(Keys.CURTIDA_SERVICE.key(), new CurtidaService(connection));
         config.appData(Keys.NOTIFICATION_SERVICE.key(), new NotificationService(connection));
@@ -140,10 +140,10 @@ public class App {
 
         //AMIZADE
         app.post("/relacao", RelacaoController::criarRelacao);
-        app.get("/relacao", RelacaoController::buscarAmizades);
-        app.delete("/relacao/{id}", RelacaoController::removerAmizade);
-        app.patch("/relacao/{id}", RelacaoController::aceitarAmizade);
-        app.get("/relacao/pendentes/{id}", RelacaoController::buscarAmizadesNaoAceitas);
+        app.get("/relacao", RelacaoController::buscarRelacao);
+        app.delete("/relacao/{id}", RelacaoController::removerRelacao);
+        app.patch("/relacao/{id}", RelacaoController::aceitarRelacao);
+        app.get("/relacao/pendentes/{id}", RelacaoController::buscarRelacoessNaoAceitas);
         app.get("/relacao/numero/seguidores/{id}", RelacaoController::numeroSeguidores);
         app.get("/relacao/numero/seguidos/{id}", RelacaoController::numeroSeguidos);
 

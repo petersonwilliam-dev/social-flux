@@ -2,19 +2,15 @@ package com.backend.controllers;
 
 import com.backend.Mensagem;
 import com.backend.Keys;
-import com.backend.model.entities.Amizade;
-import com.backend.services.AmizadeService;
+import com.backend.model.entities.Relacao;
+import com.backend.services.RelacaoService;
 import com.backend.model.entities.Usuario;
-import com.backend.services.UsuarioService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.http.Context;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +20,7 @@ public class RelacaoController {
     private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
     public static void criarRelacao(Context ctx) {
-        AmizadeService amizadeService = ctx.appData(Keys.AMIZADE_SERVICE.key());
+        RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
 
         Map<String, Object> dados = ctx.bodyAsClass(Map.class);
         Map<String, Object> seguidorJson = (Map<String, Object>) dados.get("user");
@@ -34,14 +30,14 @@ public class RelacaoController {
             Usuario seguidor = mapper.convertValue(seguidorJson, Usuario.class);
             Usuario seguido = mapper.convertValue(seguidoJson, Usuario.class);
 
-            Amizade amizade = new Amizade();
-            amizade.setSeguidor(seguidor);
-            amizade.setSeguido(seguido);
-            amizade.setAceito(!seguido.getPrivado());
+            Relacao relacao = new Relacao();
+            relacao.setSeguidor(seguidor);
+            relacao.setSeguido(seguido);
+            relacao.setAceito(!seguido.getPrivado());
 
-            if (!amizadeService.amizadeExiste(seguidor.getId(), seguido.getId())) {
-                amizade.setId(amizadeService.criarAmizade(amizade));
-                ctx.status(201).json(amizade);
+            if (!relacaoService.RelacaoExiste(seguidor.getId(), seguido.getId())) {
+                relacao.setId(relacaoService.criarRelacao(relacao));
+                ctx.status(201).json(relacao);
             } else {
                 ctx.status(409).json(new Mensagem("Você já possui amizade com esse usuário", false));
             }
@@ -51,8 +47,8 @@ public class RelacaoController {
         }
     }
 
-    public static void buscarAmizades(Context ctx) {
-        AmizadeService amizadeService = ctx.appData(Keys.AMIZADE_SERVICE.key());
+    public static void buscarRelacao(Context ctx) {
+        RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
 
         String id_seguidor = ctx.queryParam("id_seguidor");
         String id_seguido = ctx.queryParam("id_seguido");
@@ -61,18 +57,18 @@ public class RelacaoController {
                 Integer idSeguidor = Integer.parseInt(id_seguidor);
                 Integer idSeguido = Integer.parseInt(id_seguido);
 
-                Amizade amizade = amizadeService.buscarAmizade(idSeguidor, idSeguido);
-                if (amizade != null) {
-                    ctx.status(200).json(amizade);
+                Relacao relacao = relacaoService.buscarRelacao(idSeguidor, idSeguido);
+                if (relacao != null) {
+                    ctx.status(200).json(relacao);
                 }
             } else if (id_seguido != null) {
                 Integer idSeguido = Integer.parseInt(id_seguido);
-                List<Amizade> listaAmizade = amizadeService.seguidoresDoUsuario(idSeguido);
-                ctx.status(200).json(listaAmizade);
+                List<Relacao> listaRelacao = relacaoService.seguidoresDoUsuario(idSeguido);
+                ctx.status(200).json(listaRelacao);
             } else if (id_seguidor != null) {
                 Integer idSeguidor = Integer.parseInt(id_seguidor);
-                List<Amizade> listaAmizade = amizadeService.seguidosDoUsuario(idSeguidor);
-                ctx.status(200).json(listaAmizade);
+                List<Relacao> listaRelacao = relacaoService.seguidosDoUsuario(idSeguidor);
+                ctx.status(200).json(listaRelacao);
             } else {
                 ctx.status(400).json(new Mensagem("Parâmetros nulos", false));
             }
@@ -82,10 +78,10 @@ public class RelacaoController {
     }
 
     public static void numeroSeguidores(Context ctx) {
-        AmizadeService amizadeService = ctx.appData(Keys.AMIZADE_SERVICE.key());
+        RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
         try {
             Integer id = Integer.parseInt(ctx.pathParam("id"));
-            Integer numeroSeguidores = amizadeService.numeroSeguidores(id);
+            Integer numeroSeguidores = relacaoService.numeroSeguidores(id);
             ctx.status(200).json(numeroSeguidores);
         } catch (NumberFormatException e) {
             logger.error("Id inválido");
@@ -94,10 +90,10 @@ public class RelacaoController {
     }
 
     public static void numeroSeguidos(Context ctx) {
-        AmizadeService amizadeService = ctx.appData(Keys.AMIZADE_SERVICE.key());
+        RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
         try {
             Integer id = Integer.parseInt(ctx.pathParam("id"));
-            Integer numeroSeguidos = amizadeService.numeroSeguidos(id);
+            Integer numeroSeguidos = relacaoService.numeroSeguidos(id);
             ctx.status(200).json(numeroSeguidos);
         } catch (NumberFormatException e) {
             logger.error("Id inválido");
@@ -105,34 +101,34 @@ public class RelacaoController {
         }
     }
 
-    public static void removerAmizade(Context ctx) {
-        AmizadeService amizadeService = ctx.appData(Keys.AMIZADE_SERVICE.key());
+    public static void removerRelacao(Context ctx) {
+        RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
         String id = ctx.pathParam("id");
         if (id.matches("\\d+")) {
             Integer idAmizade = Integer.parseInt(id);
-            amizadeService.removerAmizade(idAmizade);
+            relacaoService.removerRelacao(idAmizade);
         } else {
             ctx.status(400).json(new Mensagem("Id não é válido", false));
         }
     }
 
-    public static void aceitarAmizade(Context ctx) {
-        AmizadeService amizadeService = ctx.appData(Keys.AMIZADE_SERVICE.key());
+    public static void aceitarRelacao(Context ctx) {
+        RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
         String id = ctx.pathParam("id");
         if (id.matches("\\d+")) {
             Integer idAmizade = Integer.parseInt(id);
-            amizadeService.aceitarAmizade(idAmizade);
+            relacaoService.aceitarRelacao(idAmizade);
         } else {
             ctx.status(400).json(new Mensagem("Id não é válido", false));
         }
     }
 
-    public static void buscarAmizadesNaoAceitas(Context ctx) {
-        AmizadeService amizadeService = ctx.appData(Keys.AMIZADE_SERVICE.key());
+    public static void buscarRelacoessNaoAceitas(Context ctx) {
+        RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
         try {
             Integer id = Integer.parseInt(ctx.pathParam("id"));
-            List<Amizade> listaAmizade = amizadeService.amizadesNaoAceitas(id);
-            ctx.status(200).json(listaAmizade);
+            List<Relacao> listaRelacao = relacaoService.RelacoesNaoAceitas(id);
+            ctx.status(200).json(listaRelacao);
         } catch (NumberFormatException e) {
             logger.error("Parâmetro inválido: " + e);
             ctx.status(400).json(new Mensagem("Parâmetro inválido", false));

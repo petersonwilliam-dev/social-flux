@@ -5,7 +5,7 @@ function ButtonBack() {
     }
 
     return (
-        <div onClick={back} style={{cursor: 'pointer'}} className="d-flex align-items-center mx-2">
+        <div onClick={back} style={{cursor: 'pointer'}} className="d-flex align-items-center mx-2 my-lg-2">
             <ion-icon name="chevron-back-outline"></ion-icon>
         </div>
     )

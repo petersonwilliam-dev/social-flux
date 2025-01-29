@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import useUserNotifications from "../../hooks/useUserNotifications";
 
-function SidebarMain({showListaRelacoesNaoAceitas, relacoesNaoAceitas, showSearchUsuarios, showNotifications, notificationsNotSeen, setNotificationsNotSeen}) {
+function SidebarMenu({showListaRelacoesNaoAceitas, relacoesNaoAceitas, showSearchUsuarios, showNotifications, notificationsNotSeen, setNotificationsNotSeen}) {
 
     return (
         <ul className="nav nav-pills flex-column mb-auto">
@@ -56,4 +55,4 @@ function SidebarMain({showListaRelacoesNaoAceitas, relacoesNaoAceitas, showSearc
     )
 }
 
-export default SidebarMain
+export default SidebarMenu

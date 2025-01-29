@@ -8,7 +8,7 @@ import java.sql.Connection;
 public enum Keys {
     SQL_DB(new Key<Connection>("sql_db")),
     USUARIO_SERVICE(new Key<UsuarioService>("usuario-service")),
-    AMIZADE_SERVICE(new Key<AmizadeService>("amizade-service")),
+    AMIZADE_SERVICE(new Key<RelacaoService>("amizade-service")),
     POSTAGEM_SERVICE(new Key<PostagemService>("postagem-service")),
     CURTIDA_SERVICE(new Key<CurtidaService>("curtida-service")),
     NOTIFICATION_SERVICE(new Key<NotificationService>("notification-service"));

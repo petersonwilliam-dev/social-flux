@@ -1,0 +1,38 @@
+.foto_search {
+    width: 60px;
+    margin-right: 5px;
+}
+.username {
+    font-size: 17px;
+}
+.name {
+    font-size: 15px;
+}
+
+.dark a {
+    color: #fff;
+}
+
+@media (max-width: 425px) {
+    .foto_search {
+        width: 50px;
+    }
+    .username {
+        font-size: 16px;
+    }
+    .name {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 375px) {
+    .foto_search {
+        width: 40px;
+    }
+    .username {
+        font-size: 14px;
+    }
+    .name {
+        font-size: 12px;
+    }
+}

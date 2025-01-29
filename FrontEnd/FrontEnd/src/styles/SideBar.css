@@ -1,0 +1,45 @@
+.sidebar {
+    background: #f8f9fa;
+}
+
+.sidebar a {
+    color: #222;
+}
+
+.sidebar a:hover {
+    color: #000;
+}
+
+.sidebar a:focus {
+    color: #000;
+}
+
+.sidebar.dark {
+    background: #212529;
+    color: #e5e5e5;
+}
+
+.sidebar.dark a {
+    color: #e5e5e5;
+}
+
+.sidebar.dark a:hover {
+    color: #fff;
+}
+
+.sidebar.dark .dropdown-menu {
+    background: #212529;
+}
+
+.sidebar.dark .dropdown-menu li {
+    color: #e5e5e5;
+}
+
+.sidebar.dark .dropdown-menu li a:hover {
+    background: #1c1f22;
+}
+
+ion-icon {
+    margin-right: 10px;
+    font-size: 20px;
+}

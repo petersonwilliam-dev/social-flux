@@ -1,0 +1,102 @@
+ion-icon {
+    margin-right: 5px;
+    font-size: 20px;
+}
+.perfil {
+    min-height: 500px;
+}
+.foto-perfil {
+    width: 80%;
+}
+.follow{
+    cursor: pointer;
+}
+.foto-relacao-em-comum {
+    width: 20px;
+}
+.relacao-em-comum {
+    font-size: 15px;
+}
+
+.profile-menu-link {
+    cursor: pointer;
+    color: #222;
+}
+
+.icon-settings {
+    color: #222;
+}
+
+.dark .icon-settings {
+    color: #fff;
+}
+
+.dark .profile-menu-link {
+    color: #fff;
+}
+
+@media (max-width: 992px) {
+    .foto-perfil {
+        width: 60%;
+    }
+    .button-relacao ion-icon {
+        font-size: 20px;
+    }
+    .profile-menu a{
+        font-size: 15px;
+    }
+    .icon-settings ion-icon{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .foto-perfil {
+        width: 80%;
+    }
+    .foto-relacao-em-comum {
+        width: 18px;
+    }
+    .relacao-em-comum {
+        font-size: 13px;
+    }
+    .button-relacao ion-icon {
+        font-size: 15px;
+    }
+    .profile-menu a{
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 500px) {
+    .foto-perfil {
+        width: 100%;
+    }
+    .button-relacao ion-icon {
+        font-size: 12px;
+    }
+    .profile-menu a{
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 426px) {
+    .foto-relacao-em-comum {
+        width: 16px;
+    }
+    .relacao-em-comum {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 376px) {
+    .foto-relacao-em-comum {
+        width: 10px;
+    }
+    .relacao-em-comum {
+        font-size: 8px;
+    }
+    .icon-settings ion-icon{
+        font-size: 15px;
+    }
+}

@@ -1,5 +1,7 @@
 package com.backend;
 
+import com.backend.controllers.*;
+import com.backend.services.*;
 import com.backend.database.SQLDBRepository;
 import io.javalin.Javalin;
 import io.javalin.config.JavalinConfig;
@@ -16,8 +18,8 @@ import java.util.function.Consumer;
 public class App {
 
     private static final Logger logger = LogManager.getLogger();
+
     private static final String PORTA_SERVIDOR = "porta.servidor";
-    private static final String CONNECTION_STRING = "mongodb.connectionString";
     private static final String SQL_URL = "sqldb.url";
     private static final String USERNAME = "sqldb.username";
     private static final String PASSWORD = "sqldb.password";
@@ -38,7 +40,11 @@ public class App {
     }
 
     private void registrarServicos(JavalinConfig config, Connection connection) {
-
+        config.appData(Keys.USUARIO_SERVICE.key(), new UsuarioService(connection));
+        config.appData(Keys.AMIZADE_SERVICE.key(), new AmizadeService(connection));
+        config.appData(Keys.POSTAGEM_SERVICE.key(), new PostagemService(connection));
+        config.appData(Keys.CURTIDA_SERVICE.key(), new CurtidaService(connection));
+        config.appData(Keys.NOTIFICATION_SERVICE.key(), new NotificationService(connection));
     }
 
     private Javalin iniciarJavalin() {
@@ -54,6 +60,7 @@ public class App {
            event.serverStarted(() -> {
                connection = iniciarSQLRepository();
                config.appData(Keys.SQL_DB.key(), connection);
+               registrarServicos(config, connection);
            });
            event.serverStopped(() -> {
                if (connection == null) {
@@ -118,8 +125,62 @@ public class App {
     }
 
     private void configurarRotas(Javalin app) {
-        app.get("/", ctx -> {
-            ctx.result("Estou funcionando");
+
+
+        //USUARIOS
+        app.get("/usuarios", UsuarioController::buscarUsuario);
+        app.patch("/usuarios/{id}", UsuarioController::atualizarDadosPerfil);
+        app.get("/usuarios/search", UsuarioController::buscarUsuariosPesquisados);
+        app.patch("/img/usuarios/{id}", UsuarioController::atualizarFoto);
+        app.get("/usuarios/compartilhado", UsuarioController::buscarRelacoesEmComum);
+
+        // AUTH
+        app.post("/login", AuthController::authenticateUser);
+        app.post("/register", AuthController::registerUser);
+
+        //AMIZADE
+        app.post("/relacao", RelacaoController::criarRelacao);
+        app.get("/relacao", RelacaoController::buscarAmizades);
+        app.delete("/relacao/{id}", RelacaoController::removerAmizade);
+        app.patch("/relacao/{id}", RelacaoController::aceitarAmizade);
+        app.get("/relacao/pendentes/{id}", RelacaoController::buscarAmizadesNaoAceitas);
+        app.get("/relacao/numero/seguidores/{id}", RelacaoController::numeroSeguidores);
+        app.get("/relacao/numero/seguidos/{id}", RelacaoController::numeroSeguidos);
+
+        // POSTAGEM
+        app.post("/postagem", PostagemController::criarPostagem);
+        app.get("/postagem", PostagemController::buscarPostagens);
+        app.delete("/postagem/{id}", PostagemController::excluirPostagem);
+        app.get("/postagem/usuario/{id}", PostagemController::buscarPostagensDoUsuario);
+        app.get("/postagem/respostas/numero/{id}", PostagemController::buscarNumeroRespostas);
+        app.get("/postagem/{id}", PostagemController::buscarPostagemPorId);
+        app.get("/postagem/respostas/{id}", PostagemController::buscarRespostasPostagem);
+
+        // CURTIDA
+        app.post("/curtida", CurtidaController::inserirCurtida);
+        app.get("/curtida", CurtidaController::buscarCurtida);
+        app.delete("/curtida/{id}", CurtidaController::removerCurtida);
+        app.get("/curtida/numero/{id_conteudo}", CurtidaController::numeroCurtidasPostagem);
+
+        //IMAGEM
+        app.get("/img/{id_usuario}/{id_imagem}", ImagemController::buscarImagem);
+
+        //NOTIFICATION
+        app.get("/notification", NotificationController::getUserNotifications);
+        app.post("/notification", NotificationController::createNotification);
+        app.patch("/notification/{id_receiver}", NotificationController::viewNotifications);
+
+        app.before(ctx -> {
+            ctx.header("Access-Control-Allow-Origin", "http://localhost:5173");
+            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
+            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        });
+
+        app.options("/*", ctx -> {
+           ctx.header("Access-Control-Allow-Origin", "http://localhost:5173");
+           ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
+           ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+           ctx.status(200);
         });
     }
 

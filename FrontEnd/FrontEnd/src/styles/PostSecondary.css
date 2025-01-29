@@ -1,0 +1,116 @@
+.post-secondary .foto-perfil-postagem {
+    width: 50px;
+}
+
+.post-secondary .post-image {
+    width: 40%;
+}
+
+.post-secondary .infos-user a {
+    font-weight: 600;
+    font-size: 15px;
+    color: #222;
+}
+
+.post-secondary .infos-user a p {
+    font-weight: 400;
+}
+
+.post-secondary .legenda {
+    font-weight: 300;
+    font-size: 17px;
+    color: #222;
+}
+
+.post-secondary.dark .infos-user a {
+    font-weight: 600;
+    font-size: 15px;
+    color: #fff;
+}
+
+.post-secondary.dark .infos-user a p {
+    font-weight: 400;
+    color: #9c9b9b;
+}
+
+.post-secondary.dark .legenda {
+    font-weight: 300;
+    font-size: 17px;
+    color: #fff;
+}
+
+.post-secondary.dark .actions ion-icon{
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .post-secondary .post-image {
+        width: 60%;
+    }
+}
+
+@media (max-width: 425px) {
+    .post-secondary .infos-user a {
+        font-size: 12px;
+    }
+    .post-secondary .post-image {
+        width: 80%;
+    }
+    .post-secondary .foto-perfil-postagem {
+        width: 40px;
+    }
+    .post-secondary .infos-user a p {
+        font-size: 12px;
+    }
+    .post-secondary .infos-user p {
+        font-size: 12px;
+    }
+    .post-secondary .infos-user ion-icon {
+        font-size: 15px;
+    }
+    .post-secondary .legenda {
+        font-size: 15px;
+    }
+    .referente {
+        font-size: 12px;
+    }
+    .actions {
+        font-size: 15px;
+    }
+    .actions ion-icon {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 375px) {
+    .post-secondary .infos-user a {
+        font-size: 10px;
+    }
+    .post-secondary .foto-perfil-postagem {
+        width: 30px;
+    }
+    .post-secondary .post-image {
+        width: 90%;
+    }
+    .post-secondary .infos-user a p {
+        font-size: 10px;
+    }
+    .post-secondary .infos-user p {
+        font-size: 10px;
+    }
+    .post-secondary .infos-user ion-icon {
+        font-size: 12px;
+    }
+    .post-secondary .legenda {
+        font-size: 12px;
+    }
+    .referente {
+        font-size: 10px;
+    }
+    .actions {
+        font-size: 13px;
+    }
+    .actions ion-icon {
+        font-size: 13px;
+    }
+}

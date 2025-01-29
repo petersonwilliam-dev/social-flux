@@ -5,17 +5,26 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start" : "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-    "start:frontend": "vite", 
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "vite",
     "start:backend": "cd ../../BackEnd && mvn clean compile exec:java",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.7",
+    "axios": "^1.7.7",
+    "concurrently": "^9.0.0",
+    "date-fns": "^4.1.0",
+    "formik": "^2.4.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "concurrently": "^9.0.0"
+    "react-redux": "^9.1.2",
+    "react-router-dom": "^6.26.2",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

@@ -1,0 +1,131 @@
+.post .foto-perfil {
+    width: 60px;
+}
+
+.post .post-image {
+    width: 50%;
+}
+.post .infos-user a {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.post .infos-user a p {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.post .legenda {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.post.dark .infos-user a {
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+}
+
+.post.dark .infos-user a p {
+    font-weight: 400;
+    font-size: 18px;
+    color: #9c9b9b;
+}
+
+.post.dark .legenda {
+    font-weight: 300;
+    font-size: 20px;
+    color: #fff;
+}
+
+.post.dark .infos-post {
+    color: #fff;
+}
+
+.post.dark .actions ion-icon{
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .post .foto-perfil {
+        width: 40px;
+    }
+    
+    .post .post-image {
+        width: 75%;
+    }
+    .post .infos-user a {
+        font-size: 15px;
+    }
+    
+    .post .infos-user a p {
+        font-size: 15px;
+    }
+    .post .referente {
+        font-size: 15px;
+    }
+    .post .legenda {
+        font-size: 18px;
+    }
+    .data-publicacao {
+        font-size: 18px;
+    }
+    .infos-post {
+        font-size: 18px;
+    }
+
+    .post.dark .infos-user a {
+        font-weight: 600;
+        font-size: 15px;
+        color: #fff;
+    }
+    
+    .post.dark .infos-user a p {
+        font-weight: 400;
+        font-size: 15px;
+        color: #9c9b9b;
+    }
+    
+    .post.dark .legenda {
+        font-weight: 300;
+        font-size: 18px;
+        color: #fff;
+    }
+}
+@media (max-width: 425px) {
+    .post .infos-user a {
+        font-size: 14px;
+    }
+    .post .legenda {
+        font-size: 16px;
+    }   
+    .post .infos-user a p {
+        font-size: 14px;
+    }
+    .referente {
+        font-size: 13px;
+    }
+    .data-publicacao {
+        font-size: 13px;
+    }
+    .infos-post {
+        font-size: 13px;
+    }
+    .post.dark .infos-user a {
+        font-weight: 600;
+        font-size: 14px;
+        color: #fff;
+    }
+    
+    .post.dark .infos-user a p {
+        font-weight: 400;
+        font-size: 14px;
+        color: #9c9b9b;
+    }
+    
+    .post.dark .legenda {
+        font-weight: 300;
+        font-size: 16px;
+        color: #fff;
+    }
+}

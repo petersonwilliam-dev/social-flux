@@ -1,0 +1,15 @@
+.foto {
+    width: 200px;
+}
+
+@media (max-width: 768px) {
+    .foto {
+        width: 150px;
+    }
+}
+
+@media (max-width: 425px) {
+    .foto {
+        width: 100px;
+    }
+}

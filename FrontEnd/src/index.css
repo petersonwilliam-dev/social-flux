@@ -58,6 +58,10 @@
     color: #fff;
 }
 
+.dropdown-menu.dark {
+    background-color: #222;
+}
+
 @media (max-width: 992px) {
     .ajustavel-1 {
         font-size: 7vw;

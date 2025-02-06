@@ -75,6 +75,17 @@ public class ImagemUtil {
         return nomeArquivo.substring(nomeArquivo.lastIndexOf(".") + 1).toLowerCase();
     }
 
+    public static void removerImagem(Integer id, String imageName) {
+
+        File image = new File("src/main/resources/imagens/"+id+"/"+imageName);
+
+        if (image.exists()) {
+            image.delete();
+        } else {
+            throw new IllegalArgumentException("Imagem não encontrada");
+        }
+    }
+
     public static BufferedImage redimensionarImagem(UploadedFile uploadedFile, int larguraDesejada, int alturaDesejada) throws IOException {
         if (uploadedFile != null) {
             try (InputStream inputStream = uploadedFile.content()) {

@@ -43,14 +43,17 @@ public class UsuarioController {
         UsuarioService usuarioService = ctx.appData(Keys.USUARIO_SERVICE.key());
 
         UploadedFile uploadedFile = ctx.uploadedFile("foto_perfil");
+        String foto_antiga = ctx.formParam("foto_antiga");
 
         try {
-
             Integer id = Integer.parseInt(ctx.pathParam("id"));
             BufferedImage imagemRedimensionada = ImagemUtil.redimensionarImagem(uploadedFile, 200, 200);
             String extensaoArquivo = ImagemUtil.buscarExtensao(uploadedFile);
             if (ImagemUtil.formatoPermitido(uploadedFile)) {
                 String nomeArquivo = ImagemUtil.inserirImagem(imagemRedimensionada, id, extensaoArquivo);
+                if (foto_antiga != null) {
+                    ImagemUtil.removerImagem(id, foto_antiga);
+                }
                 usuarioService.atualizarFotoPerfil(id, nomeArquivo);
                 Usuario usuario = usuarioService.buscarPorId(id);
                 ctx.status(200).json(usuario);

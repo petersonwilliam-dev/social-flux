@@ -156,6 +156,10 @@ public class PostagemController {
 
         try {
             Integer id = Integer.parseInt(ctx.pathParam("id"));
+            Postagem postagem = postagemService.buscarPostagemPorId(id);
+            if (postagem.getImagem() != null) {
+                ImagemUtil.removerImagem(postagem.getUsuario().getId(), postagem.getImagem());
+            }
             postagemService.excluirPostagem(id);
             ctx.status(200);
         } catch (NumberFormatException e) {

@@ -22,8 +22,6 @@ import UserInteractions from './UserInteractions.jsx'
 import UserMedia from './UserMedia.jsx'
 import ButtonBack from '../../components/ButtonBack/ButtonBack.jsx'
 import { useEffect } from 'react'
-import usePostagem from '../../hooks/usePostagem.js'
-import ListarPostagens from '../../components/Postagens/ListarPostagens.jsx'
 
 
 function Perfil({observerDarkMode, setObserverDarkMode}) {

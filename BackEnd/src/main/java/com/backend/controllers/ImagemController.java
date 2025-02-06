@@ -31,4 +31,6 @@ public class ImagemController {
             ctx.status(500).json(new Mensagem("Erro ao retornar imagem", false));
         }
     }
+
+
 }

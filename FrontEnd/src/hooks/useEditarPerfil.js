@@ -24,6 +24,8 @@ function useEditarPerfil(user) {
     function atualizarFotoPerfil(values) {
         const formData = new FormData()
         formData.append("foto_perfil", values.foto_perfil)
+        formData.append("foto_antiga", user.foto_perfil)
+        
 
         axios.patch(`${API_BASE_URL}/img/usuarios/${user.id}`, formData, {
             headers: {

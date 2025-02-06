@@ -150,10 +150,11 @@ public class App {
         // POSTAGEM
         app.post("/postagem", PostagemController::criarPostagem);
         app.get("/postagem", PostagemController::buscarPostagens);
+        app.get("/postagem/{id}", PostagemController::buscarPostagemPorId);
         app.delete("/postagem/{id}", PostagemController::excluirPostagem);
         app.get("/postagem/usuario/{id}", PostagemController::buscarPostagensDoUsuario);
         app.get("/postagem/respostas/numero/{id}", PostagemController::buscarNumeroRespostas);
-        app.get("/postagem/{id}", PostagemController::buscarPostagemPorId);
+
         app.get("/postagem/respostas/{id}", PostagemController::buscarRespostasPostagem);
 
         // CURTIDA

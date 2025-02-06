@@ -12,6 +12,7 @@ import API_BASE_URL from "../../config/apiConfig"
 
 import "../../styles/PostSecondary.css"
 import DropdownActions from "./DropdownActions"
+import ModalExcluirPostagem from "../Modals/ModalExcluirPostagem"
 
 
 function PostSecondary({postagem, usuarioLogado, excluirPostagem, idReferencia, observerDarkMode, setObserverDarkMode}) {
@@ -74,7 +75,7 @@ function PostSecondary({postagem, usuarioLogado, excluirPostagem, idReferencia, 
                             </div>
                             {postagem.usuario.id == usuarioLogado.id && (
                                 <div className="d-flex">
-                                    <DropdownActions postagem={postagem}/>
+                                    <DropdownActions postagem={postagem} setObserverDarkMode={setObserverDarkMode}/>
                                 </div>
                             )}
                         </div>
@@ -111,6 +112,7 @@ function PostSecondary({postagem, usuarioLogado, excluirPostagem, idReferencia, 
                 </div>
             </div>
             <hr />
+            <ModalExcluirPostagem postagem={postagem} excluirPostagem={excluirPostagem}/>
         </>
     )
 }

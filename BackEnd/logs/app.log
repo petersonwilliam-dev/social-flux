@@ -8093,3 +8093,189 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2025-01-29 15:09:10 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 192 days old. Consider checking for a newer version.).
 2025-01-29 15:09:10 INFO  App:88 - Conectando ao banco de dados SQL
 2025-01-29 15:09:10 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso
+2025-02-06 13:48:17 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-02-06 13:48:18 INFO  Javalin:16 - Starting Javalin ...
+2025-02-06 13:48:18 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-02-06 13:48:18 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-02-06 13:48:18 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@449e57ab{/,null,AVAILABLE}
+2025-02-06 13:48:18 INFO  AbstractConnector:376 - Started ServerConnector@77d36a1{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-02-06 13:48:18 INFO  Server:439 - Started Server@2077a1b9{STARTING}[11.0.21,sto=0] @6887ms
+2025-02-06 13:48:18 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-02-06 13:48:18 INFO  Javalin:16 - Javalin started in 312ms \o/
+2025-02-06 13:48:18 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-02-06 13:48:18 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-02-06 13:48:18 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 200 days old. Consider checking for a newer version.).
+2025-02-06 13:48:18 INFO  App:88 - Conectando ao banco de dados SQL
+2025-02-06 13:48:18 ERROR SQLDBRepository:86 - com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2025-02-06 13:48:18 ERROR App:91 - Não foi possível recuperar a conexão com o banco de dados
+2025-02-06 13:49:46 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-02-06 13:49:46 INFO  Javalin:16 - Starting Javalin ...
+2025-02-06 13:49:46 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-02-06 13:49:46 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-02-06 13:49:46 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@7ff17fcd{/,null,AVAILABLE}
+2025-02-06 13:49:46 INFO  AbstractConnector:376 - Started ServerConnector@12b5d1a5{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-02-06 13:49:46 INFO  Server:439 - Started Server@17e25a65{STARTING}[11.0.21,sto=0] @4240ms
+2025-02-06 13:49:46 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-02-06 13:49:46 INFO  Javalin:16 - Javalin started in 182ms \o/
+2025-02-06 13:49:46 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-02-06 13:49:46 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-02-06 13:49:46 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 200 days old. Consider checking for a newer version.).
+2025-02-06 13:49:46 INFO  App:88 - Conectando ao banco de dados SQL
+2025-02-06 13:49:47 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso
+2025-02-06 13:53:22 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-02-06 13:53:22 INFO  Javalin:16 - Starting Javalin ...
+2025-02-06 13:53:22 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-02-06 13:53:22 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-02-06 13:53:22 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@5cae9aca{/,null,AVAILABLE}
+2025-02-06 13:53:22 INFO  AbstractConnector:376 - Started ServerConnector@17938ba8{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-02-06 13:53:22 INFO  Server:439 - Started Server@15d71ee2{STARTING}[11.0.21,sto=0] @4219ms
+2025-02-06 13:53:22 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-02-06 13:53:22 INFO  Javalin:16 - Javalin started in 181ms \o/
+2025-02-06 13:53:22 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-02-06 13:53:22 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-02-06 13:53:22 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 200 days old. Consider checking for a newer version.).
+2025-02-06 13:53:22 INFO  App:88 - Conectando ao banco de dados SQL
+2025-02-06 13:53:22 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso
+2025-02-06 14:49:56 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-02-06 14:49:56 INFO  Javalin:16 - Starting Javalin ...
+2025-02-06 14:49:56 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-02-06 14:49:56 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-02-06 14:49:56 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@449e57ab{/,null,AVAILABLE}
+2025-02-06 14:49:56 INFO  AbstractConnector:376 - Started ServerConnector@77d36a1{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-02-06 14:49:56 INFO  Server:439 - Started Server@2077a1b9{STARTING}[11.0.21,sto=0] @6280ms
+2025-02-06 14:49:56 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-02-06 14:49:56 INFO  Javalin:16 - Javalin started in 262ms \o/
+2025-02-06 14:49:56 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-02-06 14:49:56 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-02-06 14:49:56 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 200 days old. Consider checking for a newer version.).
+2025-02-06 14:49:56 INFO  App:88 - Conectando ao banco de dados SQL
+2025-02-06 14:49:57 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso
+2025-02-06 14:50:22 INFO  UsuarioController:68 - Uma requisição com arquivo inválido no sistema: java.lang.IllegalArgumentException: Imagem não encontrada
+2025-02-06 14:50:55 INFO  UsuarioController:68 - Uma requisição com arquivo inválido no sistema: java.lang.IllegalArgumentException: Imagem não encontrada
+2025-02-06 14:51:45 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-02-06 14:51:46 INFO  Javalin:16 - Starting Javalin ...
+2025-02-06 14:51:46 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-02-06 14:51:46 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-02-06 14:51:46 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@7ff17fcd{/,null,AVAILABLE}
+2025-02-06 14:51:46 INFO  AbstractConnector:376 - Started ServerConnector@12b5d1a5{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-02-06 14:51:46 INFO  Server:439 - Started Server@17e25a65{STARTING}[11.0.21,sto=0] @5785ms
+2025-02-06 14:51:46 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-02-06 14:51:46 INFO  Javalin:16 - Javalin started in 210ms \o/
+2025-02-06 14:51:46 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-02-06 14:51:46 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-02-06 14:51:46 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 200 days old. Consider checking for a newer version.).
+2025-02-06 14:51:46 INFO  App:88 - Conectando ao banco de dados SQL
+2025-02-06 14:51:46 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso
+2025-02-06 14:51:59 INFO  UsuarioController:69 - Uma requisição com arquivo inválido no sistema: java.lang.IllegalArgumentException: Imagem não encontrada
+2025-02-06 14:52:52 INFO  UsuarioController:69 - Uma requisição com arquivo inválido no sistema: java.lang.IllegalArgumentException: Imagem não encontrada
+2025-02-06 14:54:03 INFO  UsuarioController:69 - Uma requisição com arquivo inválido no sistema: java.lang.IllegalArgumentException: Imagem não encontrada
+2025-02-06 14:57:16 INFO  UsuarioController:69 - Uma requisição com arquivo inválido no sistema: java.lang.IllegalArgumentException: Imagem não encontrada
+2025-02-06 14:58:10 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-02-06 14:58:10 INFO  Javalin:16 - Starting Javalin ...
+2025-02-06 14:58:10 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-02-06 14:58:10 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-02-06 14:58:10 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@7ff17fcd{/,null,AVAILABLE}
+2025-02-06 14:58:10 INFO  AbstractConnector:376 - Started ServerConnector@12b5d1a5{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-02-06 14:58:10 INFO  Server:439 - Started Server@17e25a65{STARTING}[11.0.21,sto=0] @5352ms
+2025-02-06 14:58:10 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-02-06 14:58:10 INFO  Javalin:16 - Javalin started in 208ms \o/
+2025-02-06 14:58:10 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-02-06 14:58:10 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-02-06 14:58:10 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 200 days old. Consider checking for a newer version.).
+2025-02-06 14:58:10 INFO  App:88 - Conectando ao banco de dados SQL
+2025-02-06 14:58:11 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso
+2025-02-06 14:58:18 INFO  UsuarioController:69 - Uma requisição com arquivo inválido no sistema: java.lang.IllegalArgumentException: Imagem não encontrada
+2025-02-06 14:59:29 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-02-06 14:59:29 INFO  Javalin:16 - Starting Javalin ...
+2025-02-06 14:59:29 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-02-06 14:59:29 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-02-06 14:59:29 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@7ff17fcd{/,null,AVAILABLE}
+2025-02-06 14:59:29 INFO  AbstractConnector:376 - Started ServerConnector@12b5d1a5{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-02-06 14:59:29 INFO  Server:439 - Started Server@17e25a65{STARTING}[11.0.21,sto=0] @4951ms
+2025-02-06 14:59:29 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-02-06 14:59:29 INFO  Javalin:16 - Javalin started in 191ms \o/
+2025-02-06 14:59:29 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-02-06 14:59:29 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-02-06 14:59:29 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 200 days old. Consider checking for a newer version.).
+2025-02-06 14:59:29 INFO  App:88 - Conectando ao banco de dados SQL
+2025-02-06 14:59:30 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso
+2025-02-06 15:03:43 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-02-06 15:03:43 INFO  Javalin:16 - Starting Javalin ...
+2025-02-06 15:03:43 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-02-06 15:03:43 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-02-06 15:03:43 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@33242c8{/,null,AVAILABLE}
+2025-02-06 15:03:43 INFO  AbstractConnector:376 - Started ServerConnector@4d7694c2{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-02-06 15:03:43 INFO  Server:439 - Started Server@5cc02214{STARTING}[11.0.21,sto=0] @4752ms
+2025-02-06 15:03:43 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-02-06 15:03:43 INFO  Javalin:16 - Javalin started in 200ms \o/
+2025-02-06 15:03:43 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-02-06 15:03:43 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-02-06 15:03:43 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 200 days old. Consider checking for a newer version.).
+2025-02-06 15:03:43 INFO  App:88 - Conectando ao banco de dados SQL
+2025-02-06 15:03:44 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso

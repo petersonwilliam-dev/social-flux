@@ -19,6 +19,8 @@ import useRelacao from "../../../hooks/useRelacao"
 
 function SideBar({user}) {
 
+    console.log(user)
+
     const dispatch = useDispatch()    
     const {unacceptedRelationships,getUnacceptedRelationships, acceptRelationship, removeRelationship} = useRelacao()
     const {toggleSidebar, toggleSearchUsuario, toggleListaRelacoesNaoAceitas, toggleNotifications, showListaRelacoesNaoAceitas, showSearchUsuarios, showSidebarMenu, showNotifications} = useToggleSidebar()

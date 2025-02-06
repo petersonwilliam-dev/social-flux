@@ -14,6 +14,7 @@ import usePostagem from "../../hooks/usePostagem"
 import useCurtida from "../../hooks/useCurtida"
 import FormComentar from "../Forms/FormComentar"
 import DropdownActions from "./DropdownActions"
+import ModalExcluirPostagem from "../Modals/ModalExcluirPostagem"
 
 function Postagem({postagem, user, excluiPostagem, observerDarkMode, setObserverDarkMode}) {
 
@@ -67,7 +68,7 @@ function Postagem({postagem, user, excluiPostagem, observerDarkMode, setObserver
                                 <p className="mx-2 my-0 text-truncate">@{postagem.usuario.username}</p>
                             </Link>
                             {postagem.usuario.id === user.id && (
-                                <DropdownActions postagem={postagem}/>
+                                <DropdownActions postagem={postagem} setObserverDarkMode={setObserverDarkMode}/>
                             )}
                         </div>
                         <Link className="text-decoration-none text-body" to={`/postagem/${postagem.id}`}>
@@ -111,6 +112,7 @@ function Postagem({postagem, user, excluiPostagem, observerDarkMode, setObserver
                     </div>
                 )}
                 <hr />
+                <ModalExcluirPostagem postagem={postagem} excluirPostagem={excluiPostagem}/>
             </div>
         </>
     )

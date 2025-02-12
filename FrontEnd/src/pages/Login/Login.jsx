@@ -22,7 +22,7 @@ function Login() {
         setShowLogin(!showLogin)
     }
 
-    if (user != null) {
+    if (user && Object.keys(user).length > 0) {
         return <Navigate to="/" replace/>
     }
 

@@ -8279,3 +8279,370 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2025-02-06 15:03:43 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 200 days old. Consider checking for a newer version.).
 2025-02-06 15:03:43 INFO  App:88 - Conectando ao banco de dados SQL
 2025-02-06 15:03:44 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso
+2025-02-10 16:58:40 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-02-10 16:58:40 INFO  Javalin:16 - Starting Javalin ...
+2025-02-10 16:58:40 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-02-10 16:58:40 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-02-10 16:58:40 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@449e57ab{/,null,AVAILABLE}
+2025-02-10 16:58:40 INFO  AbstractConnector:376 - Started ServerConnector@77d36a1{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-02-10 16:58:40 INFO  Server:439 - Started Server@2077a1b9{STARTING}[11.0.21,sto=0] @6188ms
+2025-02-10 16:58:40 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-02-10 16:58:40 INFO  Javalin:16 - Javalin started in 281ms \o/
+2025-02-10 16:58:40 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-02-10 16:58:40 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-02-10 16:58:40 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 204 days old. Consider checking for a newer version.).
+2025-02-10 16:58:40 INFO  App:88 - Conectando ao banco de dados SQL
+2025-02-10 16:58:41 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso
+2025-02-10 17:07:30 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:07:30 INFO  UsuarioController:119 - ID inválido ao buscar relações em comum:java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:07:30 INFO  UsuarioController:119 - ID inválido ao buscar relações em comum:java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:07:39 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:07:39 INFO  UsuarioController:119 - ID inválido ao buscar relações em comum:java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:07:39 INFO  UsuarioController:119 - ID inválido ao buscar relações em comum:java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:07:59 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:08:02 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:08:04 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:08:04 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:08:10 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:08:10 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:08:10 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:08:10 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:08:10 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:08:10 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:08:10 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:08:17 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:08:28 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:09:19 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:09:22 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:09:29 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:09:29 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:10:04 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:10:04 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:10:07 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:10:07 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:10:14 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:10:14 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:10:23 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:10:23 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:10:32 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:10:32 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:11:20 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:11:20 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:11:21 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:11:21 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:11:22 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:11:22 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:11:23 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:11:23 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:13:19 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:13:19 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:13:56 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:13:56 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:01 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:01 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:10 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:10 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:12 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:12 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:13 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:13 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:19 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:19 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:19 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:19 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:20 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:20 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:20 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:20 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:20 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:20 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:21 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:21 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:21 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:21 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:47 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:47 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:50 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:50 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:55 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:55 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:14:58 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:14:58 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:15:02 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:15:02 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:15:26 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:15:26 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:15:32 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:15:32 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:16:42 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:16:42 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:17:16 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:17:16 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:17:46 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:17:46 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:17:50 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:17:50 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:17:51 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:17:51 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:17:59 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:17:59 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:01 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:01 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:10 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:10 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:13 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:13 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:14 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:14 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:24 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:24 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:30 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:30 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:31 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:31 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:45 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:45 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:47 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:47 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:53 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:53 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:56 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:56 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:58 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:58 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:18:59 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:18:59 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:19:03 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:19:03 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:19:04 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:19:04 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:19:16 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:19:16 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:19:19 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:19:19 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:19:26 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:19:26 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:19:28 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:19:28 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:19:29 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:19:29 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:19:29 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:19:29 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:19:30 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:19:30 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:01 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:01 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:14 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:14 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:18 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:18 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:19 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:19 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:20 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:20 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:20 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:20 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:24 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:24 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:30 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:30 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:31 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:31 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:56 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:56 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:22:57 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:22:57 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:23:02 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:23:02 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:23:08 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:23:08 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:23:10 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:23:10 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:23:11 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:23:11 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:23:15 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:23:15 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:23:26 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:23:26 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:24:04 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:24:04 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:24:04 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:24:04 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:24:05 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:24:05 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:25:38 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:25:38 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:25:43 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:25:43 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:25:54 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:25:54 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:26:02 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:26:02 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:26:05 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:26:05 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:26:23 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:26:23 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:27:29 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:27:29 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:27:31 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:27:31 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:28:09 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:28:09 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:28:59 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:28:59 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:29:06 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:29:06 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:29:09 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:29:09 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:29:24 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:29:24 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:29:30 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:29:30 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:29:32 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:29:32 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:31:19 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:31:19 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:31:23 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:31:23 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:31:26 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:31:26 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:31:34 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:31:34 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:31:37 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:31:37 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:31:39 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:31:39 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:31:40 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:31:40 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:31:48 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:31:48 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:31:52 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:31:52 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:32:04 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:32:04 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:32:12 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:32:12 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:32:16 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:32:16 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:32:35 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:32:35 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:32:38 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:32:38 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:32:50 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:32:50 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:32:52 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:32:52 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:32:55 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:32:55 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:32:56 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:32:56 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:33:02 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:33:02 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:33:04 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:33:04 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:35:35 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:35:35 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:35:38 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:35:38 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:35:39 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:35:39 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:35:39 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:35:39 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:35:39 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:35:39 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:35:40 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:35:40 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:35:40 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:35:40 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:35:40 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:35:40 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:35:41 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:35:41 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:35:49 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:35:49 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:36:00 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:36:00 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:36:02 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:36:02 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:45:45 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:45:45 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:45:46 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:45:46 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:45:56 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:45:56 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:46:01 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:46:01 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:46:15 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:46:15 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:46:18 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:46:18 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:46:22 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:46:22 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:46:34 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:46:34 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:46:58 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:46:58 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:47:00 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:47:00 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:47:00 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:47:00 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:47:14 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:47:14 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:47:23 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:47:23 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:47:27 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:47:27 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:48:03 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:48:03 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:48:29 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:48:29 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:49:39 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:49:39 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:49:40 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:49:40 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:51:47 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:51:47 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:51:55 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:51:55 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:52:00 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:52:00 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:52:03 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:52:03 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:52:13 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:52:13 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:52:17 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:52:17 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:52:18 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:52:18 INFO  PostagemController:105 - ID inválido
+2025-02-10 17:52:20 ERROR RelacaoController:133 - Parâmetro inválido: java.lang.NumberFormatException: For input string: "undefined"
+2025-02-10 17:52:20 INFO  PostagemController:105 - ID inválido
+2025-02-12 10:12:34 INFO  App:52 - Iniciando aplicação na porta 8000
+2025-02-12 10:12:34 INFO  Javalin:16 - Starting Javalin ...
+2025-02-12 10:12:34 INFO  Server:384 - jetty-11.0.21; built: 2024-05-14T03:19:28.958Z; git: 996cd61addad9cb033e0e3eba6fa3f0fa3dc270d; jvm 22.0.1+8-16
+2025-02-12 10:12:35 INFO  DefaultSessionIdManager:332 - Session workerName=node0
+2025-02-12 10:12:35 INFO  ContextHandler:907 - Started o.e.j.s.ServletContextHandler@5dacea4e{/,null,AVAILABLE}
+2025-02-12 10:12:35 INFO  AbstractConnector:376 - Started ServerConnector@62631cc3{HTTP/1.1, (http/1.1)}{0.0.0.0:8000}
+2025-02-12 10:12:35 INFO  Server:439 - Started Server@523a6f26{STARTING}[11.0.21,sto=0] @17028ms
+2025-02-12 10:12:35 INFO  Javalin:16 - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-02-12 10:12:35 INFO  Javalin:16 - Javalin started in 714ms \o/
+2025-02-12 10:12:35 INFO  Javalin:21 - Static file handler added: StaticFileConfig(hostedPath=/, directory=/public, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<jakarta.servlet.http.HttpServletRequest, java.lang.Boolean>, mimeTypes={}). File system location: 'file:///C:/Users/willi/Desktop/Projetos/Integra%C3%A7%C3%A3o%20Java+React/BackEnd/target/classes/public/'
+2025-02-12 10:12:35 INFO  Javalin:16 - Listening on http://localhost:8000/
+2025-02-12 10:12:35 INFO  Javalin:16 - You are running Javalin 6.2.0 (released July 21, 2024. Your Javalin version is 206 days old. Consider checking for a newer version.).
+2025-02-12 10:12:35 INFO  App:88 - Conectando ao banco de dados SQL
+2025-02-12 10:12:36 INFO  SQLDBRepository:81 - Tabelas criadas com sucesso

@@ -13,19 +13,22 @@ import Notifications from './pages/Notifications/Notifications';
 import Settings from './pages/Settings/Settings';
 import { toggleDarkMode } from './assets/util/darkMode.js'
 import { useEffect, useState } from 'react';
-import Toasts from './components/Toasts/Toasts.jsx';
+import { logout } from './redux/reducer/userReducer.js';
+import { useDispatch } from 'react-redux';
 
 function App() {
 
   const user = useSelector((store) => store.user.user)
   const darkModeActivated = useSelector((store) => store.darkMode.darkMode)
-  const [message, setMessage] = useState(null)
   const [observerDarkMode, setObserverDarkMode] = useState(false)
-  const error = "Não dá mais"
+  const dispatch = useDispatch()
 
   useEffect(() => {
     toggleDarkMode(darkModeActivated)
-  }, [darkModeActivated, observerDarkMode])
+    if (user && user.__persisted_at) {
+      dispatch(logout())
+    }
+  }, [darkModeActivated, observerDarkMode, user])
   
   return (
     <div>

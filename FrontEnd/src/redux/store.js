@@ -6,9 +6,8 @@ import storage from 'redux-persist/lib/storage';
 import expireReduce from 'redux-persist-expire'
 
 const expireReducer = expireReduce("user", {
-    expireSeconds: 259200,
-    expiredState: null,
-    autoExpire: true
+    expireSeconds: 20,
+    expiredState: null
 })
 
 const persistConfigUser = {

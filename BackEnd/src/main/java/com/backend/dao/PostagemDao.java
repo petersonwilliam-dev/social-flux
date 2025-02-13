@@ -140,17 +140,4 @@ public class PostagemDao {
         preparedStatement.execute();
         preparedStatement.close();
     }
-
-    public Integer buscarNumeroRespostas(Integer id) throws SQLException {
-
-        String sql = "SELECT COUNT(*) AS total FROM postagem WHERE id_postagem = ? ";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, id);
-
-        try (ResultSet resultSet = preparedStatement.executeQuery()) {
-            resultSet.next();
-            return resultSet.getInt("total");
-        }
-    }
 }

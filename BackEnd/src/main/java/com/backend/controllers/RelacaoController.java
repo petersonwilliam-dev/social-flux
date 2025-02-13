@@ -5,6 +5,7 @@ import com.backend.Keys;
 import com.backend.model.entities.Relacao;
 import com.backend.services.RelacaoService;
 import com.backend.model.entities.Usuario;
+import com.backend.services.UsuarioService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.http.Context;
@@ -52,6 +53,7 @@ public class RelacaoController {
 
         String id_seguidor = ctx.queryParam("id_seguidor");
         String id_seguido = ctx.queryParam("id_seguido");
+        Boolean pending = Boolean.parseBoolean(ctx.queryParam("pending"));
         try {
             if (id_seguidor != null && id_seguido != null) {
                 Integer idSeguidor = Integer.parseInt(id_seguidor);
@@ -63,8 +65,13 @@ public class RelacaoController {
                 }
             } else if (id_seguido != null) {
                 Integer idSeguido = Integer.parseInt(id_seguido);
-                List<Relacao> listaRelacao = relacaoService.seguidoresDoUsuario(idSeguido);
-                ctx.status(200).json(listaRelacao);
+                if (pending) {
+                    List<Relacao> listaRelacoesNaoAceitas = relacaoService.RelacoesNaoAceitas(idSeguido);
+                    ctx.status(200).json(listaRelacoesNaoAceitas);
+                } else {
+                    List<Relacao> listaRelacao = relacaoService.seguidoresDoUsuario(idSeguido);
+                    ctx.status(200).json(listaRelacao);
+                }
             } else if (id_seguidor != null) {
                 Integer idSeguidor = Integer.parseInt(id_seguidor);
                 List<Relacao> listaRelacao = relacaoService.seguidosDoUsuario(idSeguidor);
@@ -77,29 +84,6 @@ public class RelacaoController {
         }
     }
 
-    public static void numeroSeguidores(Context ctx) {
-        RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
-        try {
-            Integer id = Integer.parseInt(ctx.pathParam("id"));
-            Integer numeroSeguidores = relacaoService.numeroSeguidores(id);
-            ctx.status(200).json(numeroSeguidores);
-        } catch (NumberFormatException e) {
-            logger.error("Id inválido");
-            ctx.status(400).json(new Mensagem("Id inválido", false));
-        }
-    }
-
-    public static void numeroSeguidos(Context ctx) {
-        RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
-        try {
-            Integer id = Integer.parseInt(ctx.pathParam("id"));
-            Integer numeroSeguidos = relacaoService.numeroSeguidos(id);
-            ctx.status(200).json(numeroSeguidos);
-        } catch (NumberFormatException e) {
-            logger.error("Id inválido");
-            ctx.status(400).json(new Mensagem("Id inválido", false));
-        }
-    }
 
     public static void removerRelacao(Context ctx) {
         RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
@@ -123,16 +107,20 @@ public class RelacaoController {
         }
     }
 
-    public static void buscarRelacoessNaoAceitas(Context ctx) {
-        RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
+    public static void buscarRelacoesEmComum(Context ctx) {
+        UsuarioService usuarioService = ctx.appData(Keys.USUARIO_SERVICE.key());
+
         try {
-            Integer id = Integer.parseInt(ctx.pathParam("id"));
-            List<Relacao> listaRelacao = relacaoService.RelacoesNaoAceitas(id);
-            ctx.status(200).json(listaRelacao);
+            Integer id = Integer.parseInt(ctx.queryParam("id_usuario"));
+            Integer id_usuario_perfil = Integer.parseInt(ctx.queryParam("id_usuario_perfil"));
+
+            List<Usuario> listaUsuarios = usuarioService.buscarRelacoesEmComum(id, id_usuario_perfil);
+            ctx.status(200).json(listaUsuarios);
         } catch (NumberFormatException e) {
-            logger.error("Parâmetro inválido: " + e);
-            ctx.status(400).json(new Mensagem("Parâmetro inválido", false));
+            logger.info("ID inválido ao buscar relações em comum:" + e);
+            ctx.status(400).json(new Mensagem("ID inválido" ,false));
         }
     }
+
 
 }

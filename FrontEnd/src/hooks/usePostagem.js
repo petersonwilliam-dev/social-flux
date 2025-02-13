@@ -67,8 +67,8 @@ function usePostagem() {
     async function buscarNumeroRespostas(id) {
 
         try {
-            const response = await axios.get(`${API_BASE_URL}/postagem/respostas/numero/${id}`)
-            return response.data
+            const response = await axios.get(`${API_BASE_URL}/postagem?id_postagem=${id}&responses=True`)
+            return response.data.length
         } catch (err) {
             setMessage(err.response.data)
             setMessage(() => {
@@ -81,7 +81,7 @@ function usePostagem() {
     async function buscarRespostas(id) {
 
         try {
-            const response = await axios.get(`${API_BASE_URL}/postagem/respostas/${id}`)
+            const response = await axios.get(`${API_BASE_URL}/postagem?id_postagem=${id}&responses=True`)
             return response.data
         } catch (err) {
             setMessage(err.response.data)

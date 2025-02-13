@@ -30,29 +30,22 @@ function useRelacao() {
 
     function getProfileUserRelationships(userProfile) {
         if (userProfile) {
-            axios.get(`${API_BASE_URL}/relacao/numero/seguidores/${userProfile.id}`)
-            .then(response => setNumeroSeguidores(response.data))
-            .catch(err => {
-                setMessage(err.response.data)
-                setInterval(() => setMessage(null), 10000)
-            })
-
-            axios.get(`${API_BASE_URL}/relacao/numero/seguidos/${userProfile.id}`)
-            .then(response => setNumeroSeguidos(response.data))
-            .catch(err => {
-                setMessage(err.response.data)
-                setInterval(() => setMessage(null), 10000)
-            })
 
             axios.get(`${API_BASE_URL}/relacao?id_seguidor=${userProfile.id}`)
-            .then(response => setSeguidos(response.data))
+            .then(response => {
+                setSeguidos(response.data)
+                setNumeroSeguidos(response.data.length)
+            })
             .catch(err => {
                 setMessage(err.response.data)
                 setInterval(() => setMessage(null), 10000)
             })
 
             axios.get(`${API_BASE_URL}/relacao?id_seguido=${userProfile.id}`)
-            .then(response => setSeguidores(response.data))
+            .then(response => {
+                setSeguidores(response.data)
+                setNumeroSeguidores(response.data.length)
+            })
             .catch(err => {
                 setMessage(err.response.data)
                 setInterval(() => setMessage(null), 10000)
@@ -93,7 +86,7 @@ function useRelacao() {
     async function getCommomRelationships(user, profileUser) {
         if (profileUser && user.id !== profileUser.id) {
             try {
-                const response = await axios.get(`${API_BASE_URL}/usuarios/compartilhado?id=${user.id}&id_usuario_perfil=${profileUser.id}`)
+                const response = await axios.get(`${API_BASE_URL}/relacao/compartilhado?id_usuario=${user.id}&id_usuario_perfil=${profileUser.id}`)
                 return response.data
             } catch (err) {
                 setMessage(err.response.data)
@@ -103,7 +96,7 @@ function useRelacao() {
     }
 
     function getUnacceptedRelationships(user) {
-        axios.get(`${API_BASE_URL}/relacao/pendentes/${user.id}`)
+        axios.get(`${API_BASE_URL}/relacao?id_seguido=${user.id}&pending=True`)
         .then(response => setUnacceptedRelationships(response.data))
         .catch(err => {
             setMessage(err.response.data)

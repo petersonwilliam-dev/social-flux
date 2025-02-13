@@ -132,7 +132,7 @@ public class App {
         app.patch("/usuarios/{id}", UsuarioController::atualizarDadosPerfil);
         app.get("/usuarios/search", UsuarioController::buscarUsuariosPesquisados);
         app.patch("/img/usuarios/{id}", UsuarioController::atualizarFoto);
-        app.get("/usuarios/compartilhado", UsuarioController::buscarRelacoesEmComum);
+
 
         // AUTH
         app.post("/login", AuthController::authenticateUser);
@@ -143,19 +143,13 @@ public class App {
         app.get("/relacao", RelacaoController::buscarRelacao);
         app.delete("/relacao/{id}", RelacaoController::removerRelacao);
         app.patch("/relacao/{id}", RelacaoController::aceitarRelacao);
-        app.get("/relacao/pendentes/{id}", RelacaoController::buscarRelacoessNaoAceitas);
-        app.get("/relacao/numero/seguidores/{id}", RelacaoController::numeroSeguidores);
-        app.get("/relacao/numero/seguidos/{id}", RelacaoController::numeroSeguidos);
+        app.get("/relacao/compartilhado", RelacaoController::buscarRelacoesEmComum);
 
         // POSTAGEM
         app.post("/postagem", PostagemController::criarPostagem);
         app.get("/postagem", PostagemController::buscarPostagens);
         app.get("/postagem/{id}", PostagemController::buscarPostagemPorId);
         app.delete("/postagem/{id}", PostagemController::excluirPostagem);
-        app.get("/postagem/usuario/{id}", PostagemController::buscarPostagensDoUsuario);
-        app.get("/postagem/respostas/numero/{id}", PostagemController::buscarNumeroRespostas);
-
-        app.get("/postagem/respostas/{id}", PostagemController::buscarRespostasPostagem);
 
         // CURTIDA
         app.post("/curtida", CurtidaController::inserirCurtida);

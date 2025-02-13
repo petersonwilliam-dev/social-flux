@@ -122,16 +122,6 @@ public class PostagemService {
             throw new RuntimeException(e);
         }
      }
-
-     public Integer buscarNumeroRespostas(Integer id) {
-        try {
-            return postagemDao.buscarNumeroRespostas(id);
-        } catch (SQLException e) {
-            logger.error("Erro ao buscar numero de respostas: " + e);
-            throw new RuntimeException(e);
-        }
-     }
-
      private Postagem resultSetToPostagem(ResultSet resultSet) throws SQLException {
          LocalDateTime data_postagem = resultSet.getTimestamp("data_postagem").toLocalDateTime();
          Usuario usuario = new Usuario();

@@ -9,7 +9,11 @@
     font-size: 15px;
 }
 
-.dark a {
+a p{
+    color: #222;
+}
+
+.dark a p{
     color: #fff;
 }
 

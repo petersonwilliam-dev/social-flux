@@ -11,15 +11,15 @@ function useUserPosts(userProfile) {
 
     useEffect(() => {
         if (userProfile) {
-            axios.get(`${API_BASE_URL}/postagem/usuario/${userProfile.id}`)
+            axios.get(`${API_BASE_URL}/postagem?id_user=${userProfile.id}`)
             .then(response => setPostagensUsuario(response.data))
             .catch(err => console.log(err))
 
-            axios.get(`${API_BASE_URL}/postagem/usuario/${userProfile.id}?allPosts=True`)
+            axios.get(`${API_BASE_URL}/postagem?id_user=${userProfile.id}&allPosts=True`)
             .then(response => setPostsInteracoesUsuario(response.data))
             .catch(err => console.log(err))
 
-            axios.get(`${API_BASE_URL}/postagem/usuario/${userProfile.id}?mediaPosts=True`)
+            axios.get(`${API_BASE_URL}/postagem?id_user=${userProfile.id}&mediaPosts=True`)
             .then(response => setPostagensMidiaUsuario(response.data))
             .catch(err => console.log(err))
         }

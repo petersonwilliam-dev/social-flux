@@ -84,7 +84,6 @@ public class UsuarioController {
             Integer id = Integer.parseInt(ctx.pathParam("id"));
             if (usuarioService.usernameExistenrte(usuarioAtualizado.getUsername())) {
                 ctx.status(409).json(new Mensagem("Username já está em uso, tente outro!", false));
-
             } else {
                 usuarioService.atualizarDadosPerfil(usuarioAtualizado);
                 Usuario usuario = usuarioService.buscarPorId(id);
@@ -106,29 +105,6 @@ public class UsuarioController {
         }
     }
 
-    public static void buscarRelacoesEmComum(Context ctx) {
-        UsuarioService usuarioService = ctx.appData(Keys.USUARIO_SERVICE.key());
 
-        try {
-            Integer id = Integer.parseInt(ctx.queryParam("id"));
-            Integer id_usuario_perfil = Integer.parseInt(ctx.queryParam("id_usuario_perfil"));
 
-            List<Usuario> listaUsuarios = usuarioService.buscarRelacoesEmComum(id, id_usuario_perfil);
-            ctx.status(200).json(listaUsuarios);
-        } catch (NumberFormatException e) {
-            logger.info("ID inválido ao buscar relações em comum:" + e);
-            ctx.status(400).json(new Mensagem("ID inválido" ,false));
-        }
-    }
-
-    private static boolean verificaDados(Usuario usuario) {
-        if (usuario.getUsername() == null || usuario.getUsername().trim().isEmpty()) return false;
-        if (usuario.getNome() == null || usuario.getNome().trim().isEmpty()) return false;
-        if (usuario.getEmail() == null || usuario.getEmail().trim().isEmpty()) return false;
-        if (usuario.getSenha() == null || usuario.getSenha().trim().isEmpty()) return false;
-        if (usuario.getTelefone() == null || usuario.getTelefone().trim().isEmpty()) return false;
-        if (usuario.getSexo() == null) return false;
-        if (usuario.getData_nascimento() == null) return false;
-        return true;
-    }
 }

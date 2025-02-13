@@ -68,56 +68,47 @@ public class PostagemController {
         }
     }
 
-    public static void buscarPostagensDoUsuario(Context ctx) {
-        PostagemService postagemService = ctx.appData(Keys.POSTAGEM_SERVICE.key());
-
-        try {
-            Integer id = Integer.parseInt(ctx.pathParam("id"));
-            Boolean allPosts = Boolean.parseBoolean(ctx.queryParam("allPosts"));
-            Boolean mediaPosts = Boolean.parseBoolean(ctx.queryParam("mediaPosts"));
-
-            if (allPosts != null && allPosts) {
-                List<Postagem> listaPostagem = postagemService.buscarPostsInteracoesUsuario(id);
-                ctx.status(200).json(listaPostagem);
-            } else if (mediaPosts != null && mediaPosts) {
-                List<Postagem> listaPostagem = postagemService.buscarPostagemComMidiaUsuario(id);
-                ctx.status(200).json(listaPostagem);
-            } else {
-                List<Postagem> listaPostagem = postagemService.buscarPostagensDoUsuario(id);
-                ctx.status(200).json(listaPostagem);
-            }
-
-        } catch (NumberFormatException e) {
-            logger.error("ID inválido");
-            ctx.status(400).json(new Mensagem("Parâmetro inválido, verifique o id", false));
-        }
-    }
-
     public static void buscarPostagens(Context ctx) {
 
         PostagemService postagemService = ctx.appData(Keys.POSTAGEM_SERVICE.key());
 
         try {
-            Integer id_seguidor = Integer.parseInt(ctx.queryParam("id_seguidor"));
-            List<Postagem> listaPostagem = postagemService.buscarPostagensSeguidosUsuario(id_seguidor);
-            ctx.status(200).json(listaPostagem);
+            String id_user = ctx.queryParam("id_user");
+            String id_seguidor = ctx.queryParam("id_seguidor");
+            String id_postagem = ctx.queryParam("id_postagem");
+
+            if (id_user != null) {
+                Integer idUser = Integer.parseInt(id_user);
+                Boolean allPosts = Boolean.parseBoolean(ctx.queryParam("allPosts"));
+                Boolean mediaPosts = Boolean.parseBoolean(ctx.queryParam("mediaPosts"));
+                if (allPosts) {
+                    List<Postagem> listaPostagens = postagemService.buscarPostsInteracoesUsuario(idUser);
+                    ctx.status(200).json(listaPostagens);
+                } else if (mediaPosts) {
+                    List<Postagem> listaPostagens = postagemService.buscarPostagemComMidiaUsuario(idUser);
+                    ctx.status(200).json(listaPostagens);
+                } else {
+                    List<Postagem> listaPostagens = postagemService.buscarPostagensDoUsuario(idUser);
+                    ctx.status(200).json(listaPostagens);
+                }
+            } else if (id_postagem != null) {
+                Integer idPostagem = Integer.parseInt(id_postagem);
+                Boolean responses = Boolean.parseBoolean(ctx.queryParam("responses"));
+                if (responses) {
+
+                    List<Postagem> respostasDaPostagem = postagemService.buscarRespostasPostagem(idPostagem);
+                    ctx.status(200).json(respostasDaPostagem);
+                } else {
+                    Postagem postagem = postagemService.buscarPostagemPorId(idPostagem);
+                    ctx.status(200).json(postagem);
+                }
+            } else {
+                Integer idSeguidor = Integer.parseInt(id_seguidor);
+                List<Postagem> listaPostagem = postagemService.buscarPostagensSeguidosUsuario(idSeguidor);
+                ctx.status(200).json(listaPostagem);
+            }
         } catch (NumberFormatException e) {
-            logger.info("ID inválido");
-            ctx.status(400).json(new Mensagem("ID inválido", false));
-        }
-    }
-
-    public static void buscarNumeroRespostas(Context ctx) {
-
-        PostagemService postagemService = ctx.appData(Keys.POSTAGEM_SERVICE.key());
-
-        try {
-            Integer id = Integer.parseInt(ctx.pathParam("id"));
-
-            Integer numeroRespostas = postagemService.buscarNumeroRespostas(id);
-            ctx.status(200).json(numeroRespostas);
-        } catch (NumberFormatException e) {
-            logger.info("Erro: Parâmetro ID inválido: " + e);
+            logger.info("ID inválido: " + e);
             ctx.status(400).json(new Mensagem("ID inválido", false));
         }
     }
@@ -130,21 +121,6 @@ public class PostagemController {
             Integer id = Integer.parseInt(ctx.pathParam("id"));
             Postagem postagem = postagemService.buscarPostagemPorId(id);
             ctx.status(200).json(postagem);
-        } catch (NumberFormatException e) {
-            logger.info("Erro: Parâmetro ID inválido: " + e);
-            ctx.status(400).json(new Mensagem("ID inválido", false));
-        }
-    }
-
-    public static void buscarRespostasPostagem(Context ctx) {
-
-        PostagemService postagemService = ctx.appData(Keys.POSTAGEM_SERVICE.key());
-
-        try {
-            Integer id = Integer.parseInt(ctx.pathParam("id"));
-
-            List<Postagem> listaPostagem = postagemService.buscarRespostasPostagem(id);
-            ctx.status(200).json(listaPostagem);
         } catch (NumberFormatException e) {
             logger.info("Erro: Parâmetro ID inválido: " + e);
             ctx.status(400).json(new Mensagem("ID inválido", false));

@@ -83,24 +83,6 @@ public class RelacaoService {
         }
     }
 
-    public Integer numeroSeguidores(Integer id) {
-        try {
-            return relacaoDao.numeroSeguidores(id);
-        } catch (SQLException e) {
-            logger.error("Erro ao pegar quantidade de seguidores: " + e);
-            throw new RuntimeException(e);
-        }
-    }
-
-    public Integer numeroSeguidos(Integer id) {
-        try {
-            return relacaoDao.numeroSeguidos(id);
-        } catch (SQLException e) {
-            logger.error("Erro ao pegar quantidade de seguidos: " + e);
-            throw new RuntimeException(e);
-        }
-    }
-
     public boolean RelacaoExiste(Integer idSeguidor, Integer idSeguido) {
         try (ResultSet resultSet = relacaoDao.buscarRelacao(idSeguidor, idSeguido)) {
             return resultSet != null;

@@ -45,28 +45,6 @@ public class RelacaoDao {
         return null;
     }
 
-    public Integer numeroSeguidores(Integer id) throws SQLException {
-        String sql = "SELECT COUNT(*) AS total FROM relacao WHERE id_seguido = ? AND aceito = 1";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, id);
-        try (ResultSet resultSet = preparedStatement.executeQuery()) {
-            resultSet.next();
-            return resultSet.getInt("total");
-        }
-    }
-
-    public Integer numeroSeguidos(Integer id) throws SQLException {
-        String sql = "SELECT COUNT(*) AS total FROM relacao WHERE id_seguidor = ? AND aceito = 1";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, id);
-        try (ResultSet resultSet = preparedStatement.executeQuery()) {
-            resultSet.next();
-            return resultSet.getInt("total");
-        }
-    }
-
     public ResultSet RelacoesNaoAceitas(Integer id) throws SQLException {
         String sql = "SELECT relacao.id, relacao.aceito, \n" +
                 "seguidor.id AS id_seguidor, seguidor.username AS username_seguidor, seguidor.nome AS nome_seguidor, seguidor.privado AS privado_seguidor, seguidor.foto_perfil AS foto_seguidor, " +

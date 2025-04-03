@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from "formik"
 import * as Yup from "yup"
 
-function FormCriarPostagem({criarPostagem, user}) {
+function FormCriarPostagem({criarPostagem}) {
 
     const validationSchema = Yup.object({
         legenda: Yup.string(),
@@ -16,7 +16,7 @@ function FormCriarPostagem({criarPostagem, user}) {
                 imagem: ''
             }}
             onSubmit={(values) => {
-                criarPostagem(values, null, user)
+                criarPostagem(values, null)
             }}>
                 {({setFieldValue, errors, touched}) => (
                     <Form >

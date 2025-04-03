@@ -14,6 +14,7 @@ dist-ssr
 
 
 src/config/apiConfig.js
+src/config/secretJwt.js
 
 # Editor directories and files
 .vscode/*

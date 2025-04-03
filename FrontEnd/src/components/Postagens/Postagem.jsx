@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { formatDate } from "../../assets/util/convertDates"
 import { useEffect, useState } from "react"
+import token from "../../config/getToken"
 
 import API_BASE_URL from "../../config/apiConfig"
 import foto_perfil from "../../assets/img/profile_photo_default.png"
@@ -19,8 +20,8 @@ import ModalExcluirPostagem from "../Modals/ModalExcluirPostagem"
 function Postagem({postagem, user, excluiPostagem, observerDarkMode, setObserverDarkMode}) {
 
     const [mostrarFormularioComentar, setMostrarFormularioCometar] = useState(false)
-    const {buscarNumeroRespostas, criarPostagem, error} = usePostagem()
-    const {buscarNumeroCurtidas} = useCurtida()
+    const {buscarNumeroRespostas, criarPostagem, error} = usePostagem(token)
+    const {buscarNumeroCurtidas} = useCurtida(token)
     const [numeroRespostas, setNumeroRespostas] = useState(0)
     const [numeroCurtidas, setNumeroCurtidas] = useState(0)
 
@@ -46,7 +47,7 @@ function Postagem({postagem, user, excluiPostagem, observerDarkMode, setObserver
     return (
         <>
             {postagem.postagem && (
-                <PostSecondary postagem={postagem.postagem} usuarioLogado={user} excluirPostagem={excluiPostagem} idReferencia={postagem.id} observerDarkMode={observerDarkMode} setObserverDarkMode={setObserverDarkMode}/>
+                <PostSecondary token={token} postagem={postagem.postagem} usuarioLogado={user} excluirPostagem={excluiPostagem} idReferencia={postagem.id} observerDarkMode={observerDarkMode} setObserverDarkMode={setObserverDarkMode}/>
             )}
             <div className="post dark-m my-3" id={postagem.id}>
                 <div className="d-flex px-4">
@@ -103,7 +104,7 @@ function Postagem({postagem, user, excluiPostagem, observerDarkMode, setObserver
                 </div>
                 <hr />
                 <div className="actions d-flex px-4">
-                    <Curtida user={user} postagem={postagem} setNumeroCurtidas={setNumeroCurtidas}/>
+                    <Curtida user={user} postagem={postagem} setNumeroCurtidas={setNumeroCurtidas} token={token}/>
                     <Comentario showFormularioComentar={showFormularioComentar}/>
                 </div>
                 {mostrarFormularioComentar && (

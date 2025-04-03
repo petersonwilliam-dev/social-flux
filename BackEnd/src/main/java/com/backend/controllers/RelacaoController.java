@@ -6,6 +6,7 @@ import com.backend.model.entities.Relacao;
 import com.backend.services.RelacaoService;
 import com.backend.model.entities.Usuario;
 import com.backend.services.UsuarioService;
+import com.backend.util.AuthMiddleware;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.http.Context;
@@ -21,6 +22,9 @@ public class RelacaoController {
     private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
     public static void criarRelacao(Context ctx) {
+
+        AuthMiddleware.AuthValidate(ctx);
+
         RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
 
         Map<String, Object> dados = ctx.bodyAsClass(Map.class);
@@ -49,6 +53,7 @@ public class RelacaoController {
     }
 
     public static void buscarRelacao(Context ctx) {
+        AuthMiddleware.AuthValidate(ctx);
         RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
 
         String id_seguidor = ctx.queryParam("id_seguidor");
@@ -86,6 +91,7 @@ public class RelacaoController {
 
 
     public static void removerRelacao(Context ctx) {
+        AuthMiddleware.AuthValidate(ctx);
         RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
         String id = ctx.pathParam("id");
         if (id.matches("\\d+")) {
@@ -97,6 +103,7 @@ public class RelacaoController {
     }
 
     public static void aceitarRelacao(Context ctx) {
+        AuthMiddleware.AuthValidate(ctx);
         RelacaoService relacaoService = ctx.appData(Keys.AMIZADE_SERVICE.key());
         String id = ctx.pathParam("id");
         if (id.matches("\\d+")) {
@@ -108,6 +115,7 @@ public class RelacaoController {
     }
 
     public static void buscarRelacoesEmComum(Context ctx) {
+        AuthMiddleware.AuthValidate(ctx);
         UsuarioService usuarioService = ctx.appData(Keys.USUARIO_SERVICE.key());
 
         try {

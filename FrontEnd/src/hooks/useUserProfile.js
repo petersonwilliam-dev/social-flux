@@ -1,6 +1,7 @@
 import axios from "axios"
 import API_BASE_URL from "../config/apiConfig"
 import { useState, useEffect } from "react"
+import token from "../config/getToken"
 
 function useUserProfile(username) {
 
@@ -8,7 +9,11 @@ function useUserProfile(username) {
     const [message , setMessage] = useState(null)
 
     useEffect(() => {
-        axios.get(`${API_BASE_URL}/usuarios?username=${username}`)
+        axios.get(`${API_BASE_URL}/usuarios?username=${username}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(response => setUserProfile(response.data))
         .catch(err => {
             setMessage(err.response)

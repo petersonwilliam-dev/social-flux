@@ -1,6 +1,7 @@
 package com.backend.controllers;
 
 import com.backend.Mensagem;
+import com.backend.util.AuthMiddleware;
 import com.backend.util.ImagemUtil;
 import io.javalin.http.Context;
 import org.apache.logging.log4j.LogManager;
@@ -16,6 +17,7 @@ public class ImagemController {
     private static final Logger logger = LogManager.getLogger();
 
     public static void buscarImagem(Context ctx) {
+
         String id_usuario = ctx.pathParam("id_usuario");
         String id_imagem = ctx.pathParam("id_imagem");
 

@@ -9,6 +9,7 @@ import com.backend.model.enums.NotificationCategory;
 import com.backend.services.NotificationService;
 import com.backend.services.PostagemService;
 import com.backend.services.UsuarioService;
+import com.backend.util.AuthMiddleware;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -25,6 +26,8 @@ public class NotificationController {
     private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
     public static void createNotification(Context ctx) {
+
+        AuthMiddleware.AuthValidate(ctx);
 
         NotificationService notificationService = ctx.appData(Keys.NOTIFICATION_SERVICE.key());
 
@@ -49,6 +52,8 @@ public class NotificationController {
 
     public static void getUserNotifications(Context ctx) {
 
+        AuthMiddleware.AuthValidate(ctx);
+
         NotificationService notificationService = ctx.appData(Keys.NOTIFICATION_SERVICE.key());
 
         try {
@@ -68,6 +73,8 @@ public class NotificationController {
     }
 
     public static void viewNotifications(Context ctx) {
+
+        AuthMiddleware.AuthValidate(ctx);
 
         NotificationService notificationService = ctx.appData(Keys.NOTIFICATION_SERVICE.key());
 

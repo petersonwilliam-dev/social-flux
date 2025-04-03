@@ -5,11 +5,16 @@ import com.backend.Mensagem;
 import com.backend.model.entities.Postagem;
 import com.backend.model.entities.Usuario;
 import com.backend.services.PostagemService;
+import com.backend.util.AuthMiddleware;
 import com.backend.util.ImagemUtil;
+import com.backend.util.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.http.Context;
 import io.javalin.http.UploadedFile;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.security.SignatureException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,13 +31,18 @@ public class PostagemController {
 
         PostagemService postagemService = ctx.appData(Keys.POSTAGEM_SERVICE.key());
 
+        AuthMiddleware.AuthValidate(ctx);
+
         try {
+
+            String bearerToken = ctx.header("Authorization");
+            String userJson = JWT.getToken(bearerToken);
+            Usuario usuario = mapper.readValue(userJson, Usuario.class);
+
             UploadedFile uploadedFile = ctx.uploadedFile("imagem");
-            Usuario usuario = mapper.readValue(ctx.formParam("usuario"), Usuario.class);
             String legenda = ctx.formParam("legenda");
             String id_postagem_form = ctx.formParam("id_postagem");
             Integer id_postagem = (id_postagem_form != null) ? Integer.parseInt(id_postagem_form) : null;
-
 
 
             if (uploadedFile != null && legenda != null && !legenda.trim().isEmpty() && usuario != null) {
@@ -72,7 +82,10 @@ public class PostagemController {
 
         PostagemService postagemService = ctx.appData(Keys.POSTAGEM_SERVICE.key());
 
+        AuthMiddleware.AuthValidate(ctx);
+
         try {
+
             String id_user = ctx.queryParam("id_user");
             String id_seguidor = ctx.queryParam("id_seguidor");
             String id_postagem = ctx.queryParam("id_postagem");
@@ -107,9 +120,13 @@ public class PostagemController {
                 List<Postagem> listaPostagem = postagemService.buscarPostagensSeguidosUsuario(idSeguidor);
                 ctx.status(200).json(listaPostagem);
             }
+
         } catch (NumberFormatException e) {
             logger.info("ID inválido: " + e);
             ctx.status(400).json(new Mensagem("ID inválido", false));
+        } catch (Exception e) {
+            logger.info("Excessão não tratada: " + e);
+            ctx.status(500).json(new Mensagem("Excessão não tratada", false));
         }
     }
 
@@ -117,18 +134,27 @@ public class PostagemController {
 
         PostagemService postagemService = ctx.appData(Keys.POSTAGEM_SERVICE.key());
 
+        AuthMiddleware.AuthValidate(ctx);
+
         try {
+
             Integer id = Integer.parseInt(ctx.pathParam("id"));
             Postagem postagem = postagemService.buscarPostagemPorId(id);
             ctx.status(200).json(postagem);
+
         } catch (NumberFormatException e) {
-            logger.info("Erro: Parâmetro ID inválido: " + e);
+            logger.info("ID inválido: " + e);
             ctx.status(400).json(new Mensagem("ID inválido", false));
+        } catch (Exception e) {
+            logger.info("Excessão não tratada: " + e);
+            ctx.status(500).json(new Mensagem("Excessão não tratada", false));
         }
     }
 
     public static void excluirPostagem(Context ctx) {
         PostagemService postagemService = ctx.appData(Keys.POSTAGEM_SERVICE.key());
+
+        AuthMiddleware.AuthValidate(ctx);
 
         try {
             Integer id = Integer.parseInt(ctx.pathParam("id"));
@@ -139,8 +165,11 @@ public class PostagemController {
             postagemService.excluirPostagem(id);
             ctx.status(200);
         } catch (NumberFormatException e) {
-            logger.info("ID inválido");
-            ctx.status(400).json(new Mensagem("ID inválido, verifique os dados", false));
+            logger.info("ID inválido: " + e);
+            ctx.status(400).json(new Mensagem("ID inválido", false));
+        } catch (Exception e) {
+            logger.info("Excessão não tratada: " + e);
+            ctx.status(500).json(new Mensagem("Excessão não tratada", false));
         }
     }
 

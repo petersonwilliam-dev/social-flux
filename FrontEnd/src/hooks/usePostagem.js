@@ -3,27 +3,29 @@ import API_BASE_URL from "../config/apiConfig"
 import { useNavigate } from "react-router-dom"
 import useNotification from "./useNotification"
 import { useState } from "react"
+import token from "../config/getToken"
 
 function usePostagem() {
 
     const navigate = useNavigate()
+    const [error, setError] = useState(null)
     const [message, setMessage] = useState(null)
     const [homePosts, setHomePosts] = useState([])
 
-    function criarPostagem(values, postagem, user) {
+    function criarPostagem(values, postagem) {
 
-        const {createNotificationComent} = useNotification()
+        const {createNotificationComent} = useNotification(token)
 
         const formData = new FormData()
 
         formData.append("legenda", values.legenda)
         formData.append("imagem", values.imagem)
-        formData.append("usuario", JSON.stringify(user))
         if (postagem) formData.append("id_postagem", postagem.id)
 
         axios.post(`${API_BASE_URL}/postagem`, formData, {
             headers: {
-                'Content-Type' : 'multipart/form-data'
+                'Content-Type' : 'multipart/form-data',
+                "Authorization": `Bearer ${token}`
             }
         })
         .then(() => {
@@ -39,7 +41,11 @@ function usePostagem() {
     }
 
     function removerPostagem(id) {
-        axios.delete(`${API_BASE_URL}/postagem/${id}`)
+        axios.delete(`${API_BASE_URL}/postagem/${id}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(() => {
             navigate(".", {replace: true})
         })
@@ -53,7 +59,11 @@ function usePostagem() {
 
     async function buscarPostagem(id) {
         try {
-            const response = await axios.get(`${API_BASE_URL}/postagem/${id}`)
+            const response = await axios.get(`${API_BASE_URL}/postagem/${id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             return response.data
         } catch (err) {
             setMessage(err.response.data)
@@ -67,7 +77,11 @@ function usePostagem() {
     async function buscarNumeroRespostas(id) {
 
         try {
-            const response = await axios.get(`${API_BASE_URL}/postagem?id_postagem=${id}&responses=True`)
+            const response = await axios.get(`${API_BASE_URL}/postagem?id_postagem=${id}&responses=True`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             return response.data.length
         } catch (err) {
             setMessage(err.response.data)
@@ -81,7 +95,11 @@ function usePostagem() {
     async function buscarRespostas(id) {
 
         try {
-            const response = await axios.get(`${API_BASE_URL}/postagem?id_postagem=${id}&responses=True`)
+            const response = await axios.get(`${API_BASE_URL}/postagem?id_postagem=${id}&responses=True`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             return response.data
         } catch (err) {
             setMessage(err.response.data)
@@ -94,7 +112,11 @@ function usePostagem() {
 
 
     function getHomePosts(user) {
-        axios.get(`${API_BASE_URL}/postagem?id_seguidor=${user.id}`)
+        axios.get(`${API_BASE_URL}/postagem?id_seguidor=${user.id}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(response => setHomePosts(response.data))
         .catch(err => {
             setMessage(err.reponse.data)

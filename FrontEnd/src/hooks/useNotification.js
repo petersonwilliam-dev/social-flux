@@ -1,5 +1,6 @@
 import API_BASE_URL from "../config/apiConfig";
 import axios from "axios"
+import token from "../config/getToken";
 
 function useNotification() {
 
@@ -14,7 +15,11 @@ function useNotification() {
             id_post: post.id
         }
 
-        axios.post(`${API_BASE_URL}/notification`, notification)
+        axios.post(`${API_BASE_URL}/notification`, notification, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(() => {
             console.log("Deu certo")
         })
@@ -32,7 +37,11 @@ function useNotification() {
             id_post: post.id
         }
 
-        axios.post(`${API_BASE_URL}/notification`, notification)
+        axios.post(`${API_BASE_URL}/notification`, notification, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(() => {
             console.log("Deu certo")
         })
@@ -50,7 +59,11 @@ function useNotification() {
             id_post: null
         }
 
-        axios.post(`${API_BASE_URL}/notification`, notification)
+        axios.post(`${API_BASE_URL}/notification`, notification, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(() => {
             console.log("Deu certo")
         })

@@ -1,21 +1,22 @@
 import axios from "axios"
 import API_BASE_URL from "../config/apiConfig"
-
 import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { alterarUsuario } from "../redux/reducer/userReducer"
 import { useNavigate } from "react-router-dom"
+import token from "../config/getToken"
 
 function useEditarPerfil(user) {
 
     const [message, setMessage] = useState(null)
-    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     function editarPerfil(values) {
-        axios.patch(`${API_BASE_URL}/usuarios/${user.id}`, values)
+        axios.patch(`${API_BASE_URL}/usuarios/${user.id}`, values, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(response => {
-            dispatch(alterarUsuario(response.data))
+            localStorage.setItem("token", response.data)
             navigate(`/perfil/${user.username}`, {replace: true})
         })
         .catch(err => setMessage(err.response.data))
@@ -29,11 +30,12 @@ function useEditarPerfil(user) {
 
         axios.patch(`${API_BASE_URL}/img/usuarios/${user.id}`, formData, {
             headers: {
-                "Content-Type" : "multipart/form-data"
+                "Content-Type" : "multipart/form-data",
+                "Authorization": `Bearer ${token}`
             }
         })
         .then(response => {
-            dispatch(alterarUsuario(response.data))
+            localStorage.setItem("token", response.data)
             navigate(`/perfil/${user.username}`, {replace: true})
         })
         .catch(err => setMessage(err.response.data))

@@ -1,14 +1,11 @@
-import { useSelector } from "react-redux";
 import ListarPostagens from "../../components/Postagens/ListarPostagens";
 import NoContent from "../../components/NotContent/NotContent";
 import usePostagem from "../../hooks/usePostagem";
 import { useEffect } from "react";
 
-function Home({observerDarkMode, setObserverDarkMode}) {
+function Home({observerDarkMode, setObserverDarkMode, user}) {
 
-    const user = useSelector((store) => store.user.user)
-
-    const {homePosts,setHomePosts, getHomePosts} = usePostagem()
+    const {homePosts, setHomePosts, getHomePosts} = usePostagem()
 
     useEffect(() => {
         getHomePosts(user)

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { calcTempPost } from "../../assets/util/convertDates"
+import token from "../../config/getToken"
 
 import perfilDefault from '../../assets/img/profile_photo_default.png'
 import Comentario from '../ActionsPostagem/Comentario'
@@ -18,8 +19,8 @@ import ModalExcluirPostagem from "../Modals/ModalExcluirPostagem"
 function PostSecondary({postagem, usuarioLogado, excluirPostagem, idReferencia, observerDarkMode, setObserverDarkMode}) {
 
     const [mostrarFormularioComentar, setMostrarFormularioCometar] = useState(false)
-    const {buscarNumeroRespostas} = usePostagem()
-    const {buscarNumeroCurtidas} = useCurtida()
+    const {buscarNumeroRespostas, criarPostagem} = usePostagem(token)
+    const {buscarNumeroCurtidas} = useCurtida(token)
     const [numeroRespostas, setNumeroRespostas] = useState(0)
     const [numeroCurtidas, setNumeroCurtidas] = useState(0)
 
@@ -96,7 +97,7 @@ function PostSecondary({postagem, usuarioLogado, excluirPostagem, idReferencia, 
                         </Link>
                         <div className="actions mt-1 d-flex">
                             <div className="likes d-flex me-2">
-                                <Curtida user={usuarioLogado} postagem={postagem} setNumeroCurtidas={setNumeroCurtidas}/> {numeroCurtidas}
+                                <Curtida user={usuarioLogado} postagem={postagem} setNumeroCurtidas={setNumeroCurtidas} token={token}/> {numeroCurtidas}
                             </div>
                             <div className="coments d-flex mx-2">
                                 <Comentario showFormularioComentar={showFormularioComentar} />{numeroRespostas}
@@ -104,7 +105,7 @@ function PostSecondary({postagem, usuarioLogado, excluirPostagem, idReferencia, 
                         </div>
                         {mostrarFormularioComentar && (
                             <div className="w-100 mt-4 pe-2">
-                                <FormComentar user={usuarioLogado} postagem={postagem}/>
+                                <FormComentar user={usuarioLogado} postagem={postagem} criarPostagem={criarPostagem}/>
                             </div>
                         )}
                         

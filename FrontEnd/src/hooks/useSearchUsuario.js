@@ -1,6 +1,7 @@
 import axios from "axios"
 import API_BASE_URL from "../config/apiConfig"
 import { useEffect, useState } from "react"
+import token from "../config/getToken"
 
 function useSearchUsuario() {
 
@@ -9,7 +10,11 @@ function useSearchUsuario() {
 
     useEffect(() => {
         if (search != "" && search.trim().length > 0) {
-            axios.get(`${API_BASE_URL}/usuarios/search?search=${search}`)
+            axios.get(`${API_BASE_URL}/usuarios/search?search=${search}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             .then(response => {
                 setUsuariosPesquisados(response.data)
             })

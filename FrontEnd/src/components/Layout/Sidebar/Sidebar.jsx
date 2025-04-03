@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
-import { useDispatch } from "react-redux"
-import { logout } from "../../../redux/reducer/userReducer"
 import { useEffect } from "react"
+import useAuth from "../../../hooks/useAuth"
 
 import "../../../styles/Sidebar.css"
 
@@ -19,7 +18,7 @@ import useRelacao from "../../../hooks/useRelacao"
 
 function SideBar({user}) {
 
-    const dispatch = useDispatch()    
+    const { logout } = useAuth()
     const {unacceptedRelationships,getUnacceptedRelationships, acceptRelationship, removeRelationship} = useRelacao()
     const {toggleSidebar, toggleSearchUsuario, toggleListaRelacoesNaoAceitas, toggleNotifications, showListaRelacoesNaoAceitas, showSearchUsuarios, showSidebarMenu, showNotifications} = useToggleSidebar()
     const {setSearch, search, usuariosPesquisados} = useSearchUsuario()
@@ -58,7 +57,7 @@ function SideBar({user}) {
                         <li><Link className="dropdown-item d-flex align-items-center" to={`/perfil/${user.username}`}><ion-icon name="person-circle-outline"></ion-icon>Perfil</Link></li>
                         <li><Link to="/settings" className="dropdown-item d-flex align-items-center" ><ion-icon name="settings-outline"></ion-icon>Configurações</Link></li>
                         <li><hr /></li>
-                        <li><a className="dropdown-item d-flex align-items-center" style={{cursor: 'pointer'}} onClick={() => dispatch(logout())}><ion-icon name="log-out-outline"></ion-icon> Sair</a></li>
+                        <li><a className="dropdown-item d-flex align-items-center" style={{cursor: 'pointer'}} onClick={logout}><ion-icon name="log-out-outline"></ion-icon> Sair</a></li>
                     </ul>
                 </div>
             </div>

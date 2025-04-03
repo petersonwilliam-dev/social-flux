@@ -20,7 +20,7 @@ function FormComentar({user, postagem, criarPostagem}) {
             imagem: ''
         }}
         onSubmit={(values) => {
-            criarPostagem(values, postagem, user)
+            criarPostagem(values, postagem)
         }}>
             {({setFieldValue, errors, touched}) => (
                 <Form className="dark-m">

@@ -10,9 +10,7 @@ import "../../styles/Modal.css"
 import "../../styles/EditarPerfil.css"
 import Toasts from "../../components/Toasts/Toasts"
 
-function EditarPerfil() {
-
-    const user = useSelector((store) => store.user.user)
+function EditarPerfil({user}) {
 
     const {editarPerfil, atualizarFotoPerfil, message, setMessage} = useEditarPerfil(user)
 

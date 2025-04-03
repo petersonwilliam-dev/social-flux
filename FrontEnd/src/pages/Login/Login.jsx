@@ -1,19 +1,15 @@
-import axios from 'axios'
 import '../../styles/Login.css'
 import FormSignin from '../../components/Forms/FormSignin'
 import Toasts from '../../components/Toasts/Toasts'
-import { useDispatch, useSelector} from 'react-redux'
 import { useState } from 'react'
 import FormSignup from '../../components/Forms/FormSignup'
 import { Navigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
+import decodeJwt from '../../assets/util/decode-jwt.js'
+import token from '../../config/getToken.js'
 
 
 function Login() {
-
-    const user = useSelector((store) => store.user.user)
-
-    const dispatch = useDispatch()
 
     const [showLogin, setShowLogin] = useState(true)
     const {login, register, message, setMessage} = useAuth()
@@ -22,8 +18,11 @@ function Login() {
         setShowLogin(!showLogin)
     }
 
-    if (user && Object.keys(user).length > 0) {
-        return <Navigate to="/" replace/>
+    if (token) {
+        const user = decodeJwt(token)
+        if (user) {
+            return <Navigate to="/" replace/>
+        }
     }
 
     return (

@@ -1,13 +1,12 @@
 import { useState } from "react"
 import useCurtida from "../../hooks/useCurtida"
 import { useEffect } from "react"
-import useNotification from "../../hooks/useNotification"
 import Toasts from "../Toasts/Toasts"
 
-function Curtida({user, postagem, setNumeroCurtidas}) {
+function Curtida({user, postagem, setNumeroCurtidas, token}) {
 
     const [curtida, setCurtida] = useState(null)
-    const {criarCurtida, buscarCurtida, removerCurtida, buscarNumeroCurtidas, message, setMessage} = useCurtida()
+    const {criarCurtida, buscarCurtida, removerCurtida, buscarNumeroCurtidas, message, setMessage} = useCurtida(token)
 
     useEffect(() => {
         const fetchCurtida = async () => {

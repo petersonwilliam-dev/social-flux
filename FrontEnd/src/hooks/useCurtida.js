@@ -2,6 +2,7 @@ import axios from "axios"
 import API_BASE_URL from "../config/apiConfig"
 import useNotification from "./useNotification"
 import { useState } from "react"
+import token from "../config/getToken"
 
 function useCurtida() {
 
@@ -16,7 +17,11 @@ function useCurtida() {
         }
 
         try {
-            const response = await axios.post(`${API_BASE_URL}/curtida`, curtida)
+            const response = await axios.post(`${API_BASE_URL}/curtida`, curtida, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             createNotificationLike(user, postagem)
             return response.data
         } catch (err) {
@@ -29,7 +34,11 @@ function useCurtida() {
 
     async function buscarCurtida(user, postagem) {
         try {
-            const response = await axios.get(`${API_BASE_URL}/curtida?id_usuario=${user.id}&id_conteudo=${postagem.id}`)
+            const response = await axios.get(`${API_BASE_URL}/curtida?id_usuario=${user.id}&id_conteudo=${postagem.id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             return response.data
         } catch (err) {
             console.log(err)
@@ -38,7 +47,11 @@ function useCurtida() {
     }
 
     function removerCurtida(curtida, setCurtida, setNumeroCurtida) {
-        axios.delete(`${API_BASE_URL}/curtida/${curtida.id}`)
+        axios.delete(`${API_BASE_URL}/curtida/${curtida.id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
         .then(() => {
             setCurtida(null)
             setNumeroCurtida(prev => prev - 1)
@@ -51,7 +64,11 @@ function useCurtida() {
 
     async function buscarNumeroCurtidas(postagem) {
         try {
-            const response = await axios.get(`${API_BASE_URL}/curtida/numero/${postagem.id}`)
+            const response = await axios.get(`${API_BASE_URL}/curtida/numero/${postagem.id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             return response.data
         } catch (err) {
             setMessage(err.response.data)

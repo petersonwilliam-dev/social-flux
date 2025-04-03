@@ -4,10 +4,15 @@ import com.backend.Keys;
 import com.backend.Mensagem;
 import com.backend.model.entities.Usuario;
 import com.backend.services.UsuarioService;
+import com.backend.util.JWT;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.http.Context;
+import io.javalin.http.UnauthorizedResponse;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.security.SignatureException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.mindrot.jbcrypt.BCrypt;
@@ -28,7 +33,10 @@ public class AuthController {
                     if (!usuarioService.usernameExistenrte(usuario.getUsername())) {
                         usuarioService.inserir(usuario);
                         Usuario usuarioResposta = usuarioService.buscarPorEmail(usuario.getEmail());
-                        ctx.status(201).json(usuarioResposta);
+                        usuarioResposta.setSenha(null);
+                        String userJson = mapper.writeValueAsString(usuarioResposta);
+                        String userJwt = JWT.generateJwt(userJson);
+                        ctx.status(201).json(userJwt);
                     } else {
                         ctx.status(400).json(new Mensagem("Username já cadastrado, tente outro!", false));
                     }
@@ -52,7 +60,10 @@ public class AuthController {
             Usuario usuario = usuarioService.buscarPorEmail(userData.getEmail());
             if (usuario != null) {
                 if (BCrypt.checkpw(userData.getSenha(), usuario.getSenha())) {
-                    ctx.status(200).json(usuario);
+                    usuario.setSenha(null);
+                    String userJson = mapper.writeValueAsString(usuario);
+                    String userJwt = JWT.generateJwt(userJson);
+                    ctx.status(200).json(userJwt);
                 } else {
                     ctx.status(401).json(new Mensagem("Senha incorreta, tente novamente!", false));
                 }

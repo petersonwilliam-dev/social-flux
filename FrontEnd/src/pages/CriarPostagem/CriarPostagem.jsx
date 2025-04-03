@@ -5,11 +5,9 @@ import ButtonBack from "../../components/ButtonBack/ButtonBack"
 import Toasts from "../../components/Toasts/Toasts"
 
 
-function CriarPostagem() {
+function CriarPostagem({user}) {
 
-    const user = useSelector((store) => store.user.user)
-
-    const {criarPostagem, message, setMessage} = usePostagem(user)
+    const {criarPostagem, message, setMessage} = usePostagem()
 
     return (
         <div className="criar_postagem">

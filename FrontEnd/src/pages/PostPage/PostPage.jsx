@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { useSelector } from "react-redux"
 
 import usePostagem from "../../hooks/usePostagem"
 import Postagem from "../../components/Postagens/Postagem"
 import ListarPostagens from "../../components/Postagens/ListarPostagens"
 import ButtonBack from '../../components/ButtonBack/ButtonBack'
 
-function PostPage({observerDarkMode, setObserverDarkMode}) {
-
-    const user = useSelector((store) => store.user.user)
+function PostPage({observerDarkMode, setObserverDarkMode, user, }) {
 
     const {id} = useParams()
     const [postagem, setPostagem] = useState(null)

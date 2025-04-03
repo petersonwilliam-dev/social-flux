@@ -3,14 +3,12 @@ package com.backend;
 import com.backend.controllers.*;
 import com.backend.services.*;
 import com.backend.database.SQLDBRepository;
+import com.backend.util.PropertiesUtil;
 import io.javalin.Javalin;
 import io.javalin.config.JavalinConfig;
 import io.javalin.http.staticfiles.Location;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.util.Properties;
 import java.util.function.Consumer;
@@ -27,7 +25,7 @@ public class App {
     private final Properties properties;
     private Connection connection;
 
-    public App() {this.properties = getProperties();}
+    public App() {this.properties = PropertiesUtil.getProperties();}
 
     public void iniciar() {
         Javalin app = iniciarJavalin();
@@ -40,6 +38,7 @@ public class App {
     }
 
     private void registrarServicos(JavalinConfig config, Connection connection) {
+
         config.appData(Keys.USUARIO_SERVICE.key(), new UsuarioService(connection));
         config.appData(Keys.AMIZADE_SERVICE.key(), new RelacaoService(connection));
         config.appData(Keys.POSTAGEM_SERVICE.key(), new PostagemService(connection));
@@ -75,6 +74,7 @@ public class App {
             staticFileConfig.directory = "/public";
             staticFileConfig.location = Location.CLASSPATH;
         });
+
     }
 
     private Connection iniciarSQLRepository() {
@@ -109,29 +109,29 @@ public class App {
         return porta;
     }
 
-    private Properties getProperties() {
-        Properties props = new Properties();
-        try (InputStream input = App.class.getClassLoader().getResourceAsStream("application.properties")) {
-            if (input == null) {
-                logger.error("Arquivo application.properties não encontrado");
-                System.exit(1);
-            }
-            props.load(input);
-        } catch (IOException exception) {
-            logger.error("Erro ao carregar o arquivo de propriedades /src/main/resources/application.properties", exception);
-            System.exit(1);
-        }
-        return props;
-    }
-
     private void configurarRotas(Javalin app) {
 
 
+
+        app.before(ctx -> {
+            ctx.header("Access-Control-Allow-Origin", "http://localhost:5173");
+            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
+            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            ctx.header("Access-Control-Allow-Credentials", "true");
+        });
+
+        app.options("/*", ctx -> {
+            ctx.header("Access-Control-Allow-Origin", "http://localhost:5173");
+            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
+            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            ctx.status(200);
+        });
+
         //USUARIOS
-        app.get("/usuarios", UsuarioController::buscarUsuario);
-        app.patch("/usuarios/{id}", UsuarioController::atualizarDadosPerfil);
-        app.get("/usuarios/search", UsuarioController::buscarUsuariosPesquisados);
-        app.patch("/img/usuarios/{id}", UsuarioController::atualizarFoto);
+        app.get("/api/usuarios", UsuarioController::buscarUsuario);
+        app.patch("/api/usuarios/{id}", UsuarioController::atualizarDadosPerfil);
+        app.get("/api/usuarios/search", UsuarioController::buscarUsuariosPesquisados);
+        app.patch("/api/img/usuarios/{id}", UsuarioController::atualizarFoto);
 
 
         // AUTH
@@ -139,44 +139,33 @@ public class App {
         app.post("/register", AuthController::registerUser);
 
         //AMIZADE
-        app.post("/relacao", RelacaoController::criarRelacao);
-        app.get("/relacao", RelacaoController::buscarRelacao);
-        app.delete("/relacao/{id}", RelacaoController::removerRelacao);
-        app.patch("/relacao/{id}", RelacaoController::aceitarRelacao);
-        app.get("/relacao/compartilhado", RelacaoController::buscarRelacoesEmComum);
+        app.post("/api/relacao", RelacaoController::criarRelacao);
+        app.get("/api/relacao", RelacaoController::buscarRelacao);
+        app.delete("/api/relacao/{id}", RelacaoController::removerRelacao);
+        app.patch("/api/relacao/{id}", RelacaoController::aceitarRelacao);
+        app.get("/api/relacao/compartilhado", RelacaoController::buscarRelacoesEmComum);
 
         // POSTAGEM
-        app.post("/postagem", PostagemController::criarPostagem);
-        app.get("/postagem", PostagemController::buscarPostagens);
-        app.get("/postagem/{id}", PostagemController::buscarPostagemPorId);
-        app.delete("/postagem/{id}", PostagemController::excluirPostagem);
+        app.post("/api/postagem", PostagemController::criarPostagem);
+        app.get("/api/postagem", PostagemController::buscarPostagens);
+        app.get("/api/postagem/{id}", PostagemController::buscarPostagemPorId);
+        app.delete("/api/postagem/{id}", PostagemController::excluirPostagem);
 
         // CURTIDA
-        app.post("/curtida", CurtidaController::inserirCurtida);
-        app.get("/curtida", CurtidaController::buscarCurtida);
-        app.delete("/curtida/{id}", CurtidaController::removerCurtida);
-        app.get("/curtida/numero/{id_conteudo}", CurtidaController::numeroCurtidasPostagem);
+        app.post("/api/curtida", CurtidaController::inserirCurtida);
+        app.get("/api/curtida", CurtidaController::buscarCurtida);
+        app.delete("/api/curtida/{id}", CurtidaController::removerCurtida);
+        app.get("/api/curtida/numero/{id_conteudo}", CurtidaController::numeroCurtidasPostagem);
 
         //IMAGEM
-        app.get("/img/{id_usuario}/{id_imagem}", ImagemController::buscarImagem);
+        app.get("/api/img/{id_usuario}/{id_imagem}", ImagemController::buscarImagem);
 
         //NOTIFICATION
-        app.get("/notification", NotificationController::getUserNotifications);
-        app.post("/notification", NotificationController::createNotification);
-        app.patch("/notification/{id_receiver}", NotificationController::viewNotifications);
+        app.get("/api/notification", NotificationController::getUserNotifications);
+        app.post("/api/notification", NotificationController::createNotification);
+        app.patch("/api/notification/{id_receiver}", NotificationController::viewNotifications);
 
-        app.before(ctx -> {
-            ctx.header("Access-Control-Allow-Origin", "http://localhost:5173");
-            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
-            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-        });
 
-        app.options("/*", ctx -> {
-           ctx.header("Access-Control-Allow-Origin", "http://localhost:5173");
-           ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
-           ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-           ctx.status(200);
-        });
     }
 
     public static void main(String[] args) {

@@ -4,15 +4,14 @@ import com.backend.Mensagem;
 import com.backend.Keys;
 import com.backend.model.entities.Usuario;
 import com.backend.services.UsuarioService;
+import com.backend.util.AuthMiddleware;
 import com.backend.util.ImagemUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.http.Context;
 import io.javalin.http.UploadedFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -25,6 +24,9 @@ public class UsuarioController {
 
     public static void buscarUsuario(Context ctx) {
         UsuarioService usuarioService = ctx.appData(Keys.USUARIO_SERVICE.key());
+
+        AuthMiddleware.AuthValidate(ctx);
+
         String username = ctx.queryParam("username");
         if (username != null) {
             Usuario usuario = usuarioService.buscarPorUsername(username);
@@ -41,6 +43,8 @@ public class UsuarioController {
     public static void atualizarFoto(Context ctx) {
 
         UsuarioService usuarioService = ctx.appData(Keys.USUARIO_SERVICE.key());
+
+        AuthMiddleware.AuthValidate(ctx);
 
         UploadedFile uploadedFile = ctx.uploadedFile("foto_perfil");
         String foto_antiga = ctx.formParam("foto_antiga");
@@ -79,6 +83,8 @@ public class UsuarioController {
     public static void atualizarDadosPerfil(Context ctx) {
         UsuarioService usuarioService = ctx.appData(Keys.USUARIO_SERVICE.key());
 
+        AuthMiddleware.AuthValidate(ctx);
+
         try {
             Usuario usuarioAtualizado = mapper.readValue(ctx.body(), Usuario.class);
             Integer id = Integer.parseInt(ctx.pathParam("id"));
@@ -97,6 +103,8 @@ public class UsuarioController {
 
     public static void buscarUsuariosPesquisados(Context ctx) {
         UsuarioService usuarioService = ctx.appData(Keys.USUARIO_SERVICE.key());
+
+        AuthMiddleware.AuthValidate(ctx);
 
         String search = ctx.queryParam("search");
         if (search != null) {

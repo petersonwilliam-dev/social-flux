@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import API_BASE_URL from "../config/apiConfig"
 import useNotification from "./useNotification"
+import token from "../config/getToken"
 
 
 function useRelacao() {
@@ -17,7 +18,11 @@ function useRelacao() {
 
     function seekRelationship(user, userProfile) {
         if (userProfile && user.id !== userProfile.id) {
-            axios.get(`${API_BASE_URL}/relacao?id_seguidor=${user.id}&id_seguido=${userProfile.id}`)
+            axios.get(`${API_BASE_URL}/relacao?id_seguidor=${user.id}&id_seguido=${userProfile.id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             .then(response => {
                 setRelacao(response.data)
             })
@@ -31,7 +36,11 @@ function useRelacao() {
     function getProfileUserRelationships(userProfile) {
         if (userProfile) {
 
-            axios.get(`${API_BASE_URL}/relacao?id_seguidor=${userProfile.id}`)
+            axios.get(`${API_BASE_URL}/relacao?id_seguidor=${userProfile.id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             .then(response => {
                 setSeguidos(response.data)
                 setNumeroSeguidos(response.data.length)
@@ -41,7 +50,11 @@ function useRelacao() {
                 setInterval(() => setMessage(null), 10000)
             })
 
-            axios.get(`${API_BASE_URL}/relacao?id_seguido=${userProfile.id}`)
+            axios.get(`${API_BASE_URL}/relacao?id_seguido=${userProfile.id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             .then(response => {
                 setSeguidores(response.data)
                 setNumeroSeguidores(response.data.length)
@@ -57,7 +70,11 @@ function useRelacao() {
         const relacao = {user, profileUser}
         const {createNotificationFollow} = useNotification()
 
-        axios.post(`${API_BASE_URL}/relacao`, relacao)
+        axios.post(`${API_BASE_URL}/relacao`, relacao, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(response => {
             setRelacao(response.data)
             if (response.data.aceito) {
@@ -72,7 +89,11 @@ function useRelacao() {
     }
 
     function removeRelationship(id) {
-        axios.delete(`${API_BASE_URL}/relacao/${relacao.id}`)
+        axios.delete(`${API_BASE_URL}/relacao/${relacao.id}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(() => {
             setRelacao(null)
             setNumeroSeguidores(prev => prev - 1)
@@ -86,7 +107,11 @@ function useRelacao() {
     async function getCommomRelationships(user, profileUser) {
         if (profileUser && user.id !== profileUser.id) {
             try {
-                const response = await axios.get(`${API_BASE_URL}/relacao/compartilhado?id_usuario=${user.id}&id_usuario_perfil=${profileUser.id}`)
+                const response = await axios.get(`${API_BASE_URL}/relacao/compartilhado?id_usuario=${user.id}&id_usuario_perfil=${profileUser.id}`, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
                 return response.data
             } catch (err) {
                 setMessage(err.response.data)
@@ -96,7 +121,11 @@ function useRelacao() {
     }
 
     function getUnacceptedRelationships(user) {
-        axios.get(`${API_BASE_URL}/relacao?id_seguido=${user.id}&pending=True`)
+        axios.get(`${API_BASE_URL}/relacao?id_seguido=${user.id}&pending=True`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(response => setUnacceptedRelationships(response.data))
         .catch(err => {
             setMessage(err.response.data)
@@ -110,7 +139,11 @@ function useRelacao() {
 
         const {createNotificationFollow} = useNotification()
         
-        axios.patch(`${API_BASE_URL}/relacao/${id}`)
+        axios.patch(`${API_BASE_URL}/relacao/${id}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
         .then(() => {
             setUnacceptedRelationships(unacceptedRelationships.filter(relationship => relationship.id !== id))
             createNotificationFollow(follower, user)

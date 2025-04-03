@@ -1,6 +1,4 @@
 import '../../styles/Perfil.css'
-
-import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { Link } from 'react-router-dom'
 
@@ -24,9 +22,8 @@ import ButtonBack from '../../components/ButtonBack/ButtonBack.jsx'
 import { useEffect } from 'react'
 
 
-function Perfil({observerDarkMode, setObserverDarkMode}) {
+function Perfil({observerDarkMode, setObserverDarkMode, user}) {
 
-    const user = useSelector((state) => state.user.user)
     const {username} = useParams()
 
     const {userProfile, message, setMessage} = useUserProfile(username)

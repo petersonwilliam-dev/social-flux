@@ -4,6 +4,7 @@ import com.backend.Keys;
 import com.backend.Mensagem;
 import com.backend.model.entities.Curtida;
 import com.backend.services.CurtidaService;
+import com.backend.util.AuthMiddleware;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -20,6 +21,8 @@ public class CurtidaController {
 
         CurtidaService curtidaService = ctx.appData(Keys.CURTIDA_SERVICE.key());
 
+        AuthMiddleware.AuthValidate(ctx);
+
         try {
             Curtida curtida = mapper.readValue(ctx.body(), Curtida.class);
             Integer id = curtidaService.inserirCurtida(curtida);
@@ -34,6 +37,8 @@ public class CurtidaController {
     public static void buscarCurtida(Context ctx) {
 
         CurtidaService curtidaService = ctx.appData(Keys.CURTIDA_SERVICE.key());
+
+        AuthMiddleware.AuthValidate(ctx);
 
         try {
             if (ctx.queryParam("id_usuario") != null && ctx.queryParam("id_conteudo") != null) {
@@ -59,6 +64,8 @@ public class CurtidaController {
 
         CurtidaService curtidaService = ctx.appData(Keys.CURTIDA_SERVICE.key());
 
+        AuthMiddleware.AuthValidate(ctx);
+
         try {
             Integer id = Integer.parseInt(ctx.pathParam("id"));
 
@@ -73,6 +80,8 @@ public class CurtidaController {
     public static void numeroCurtidasPostagem(Context ctx) {
 
         CurtidaService curtidaService = ctx.appData(Keys.CURTIDA_SERVICE.key());
+
+        AuthMiddleware.AuthValidate(ctx);
 
         try {
             Integer id_conteudo = Integer.parseInt(ctx.pathParam("id_conteudo"));

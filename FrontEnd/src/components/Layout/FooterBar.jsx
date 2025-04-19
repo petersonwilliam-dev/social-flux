@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom"
 import useUserNotifications from "../../hooks/useUserNotifications"
 import "../../styles/FooterBar.css"
+import Toasts from "../Toasts/Toasts"
 
 function FooterBar({user}) {
 
-    const {notificationsNotSeen, setNotificationsNotSeen} = useUserNotifications(user)
+    const {notificationsNotSeen, setNotificationsNotSeen, message} = useUserNotifications(user)
 
     return (
         <footer className="fixed-bottom">
+            {message && (
+                <Toasts mensagem={message} />
+            )}
             <ul className="d-flex justify-content-between d-lg-none nav nav-pills p-2 dark-m footer-bar">
                 <li>
                     <Link to="/" className="nav-link d-flex align-items-center">

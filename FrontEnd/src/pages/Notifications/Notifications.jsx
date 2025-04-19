@@ -8,11 +8,12 @@ import ListNotifications from "../../components/Notifications/ListNotifications"
 import ListaRelacoesNaoAceitas from '../../components/Relacao/ListaRelcoesNaoAceitas'
 import useRelacao from '../../hooks/useRelacao'
 import { useEffect } from 'react'
+import Toasts from '../../components/Toasts/Toasts'
 
 function Notifications({user}) {
 
-    const {userNotifications, viewNotifications} = useUserNotifications(user)
-    const {unacceptedRelationships, getUnacceptedRelationships, acceptRelationship, removeRelationship} = useRelacao()
+    const {userNotifications, viewNotifications, message} = useUserNotifications(user)
+    const {unacceptedRelationships, getUnacceptedRelationships, acceptRelationship, removeRelationship, message: messageRelacao} = useRelacao()
     const {toggleNotifications, toggleSolicitacoes, showNotifications, showSolicitacoes} = toggleNotificationsPage()
 
     useEffect(() => {
@@ -26,6 +27,9 @@ function Notifications({user}) {
 
     return (
         <div className="notifications">
+            {message || messageRelacao && (
+                <Toasts mensagem={message ? message : messageRelacao}/>
+            )}
             <div className=" mb-2">
                 <div className='d-flex' onClick={viewNotifications}>
                     <ButtonBack />

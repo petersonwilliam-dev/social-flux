@@ -28,7 +28,7 @@ function Login() {
     return (
         <div className="Login">
             {message && (
-                <Toasts msg={message.mensagem} type="danger" />
+                <Toasts msg={message}/>
             )}
             <div className="row g-0 bg-primary">
                 <div className="col-12 col-lg-6 bg-light container-login p-5 d-flex align-items-center justify-content-center">

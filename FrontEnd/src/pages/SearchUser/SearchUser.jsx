@@ -1,13 +1,17 @@
 import useSearchUsuario from "../../hooks/useSearchUsuario"
 import CardUsuarioSearch from "../../components/CardUsuarioSearch/CardUsuarioSearch"
 import ButtonBack from '../../components/ButtonBack/ButtonBack'
+import Toasts from "../../components/Toasts/Toasts"
 
 function SearchUser({user}) {
 
-    const {search, setSearch, usuariosPesquisados} = useSearchUsuario()
+    const {search, setSearch, usuariosPesquisados, message} = useSearchUsuario()
 
     return (
         <div className="search-user">
+            {message && (
+                <Toasts mensagem={message}/>
+            )}
             <div className="search-bar me-2 d-flex align-items-center">
                 <ButtonBack />
                 <input type="text" className="form-control" id="search" placeholder="Faça sua pesquisa" onChange={(e) => setSearch(e.target.value)}/>

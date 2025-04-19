@@ -5,10 +5,11 @@ import { useEffect, useState } from 'react'
 import "../../styles/CardUsuarioSearch.css"
 import API_BASE_URL from '../../config/apiConfig'
 import useRelacao from '../../hooks/useRelacao'
+import Toasts from '../Toasts/Toasts'
 
 function CardUsuarioSearch({userSearched, user}) {
 
-    const {getCommomRelationships} = useRelacao()
+    const {getCommomRelationships, message} = useRelacao()
     const [relacoesEmComum, setRelacoesEmComum] = useState([])
 
     useEffect(() => {
@@ -22,6 +23,9 @@ function CardUsuarioSearch({userSearched, user}) {
 
     return (
         <li className='my-1 dark-m'>
+            {message && (
+                <Toasts mensagem={message} />
+            )}
             <div className="w-100">
                 <div className="d-flex justify-content-start align-items-center">
                     <Link to={`/perfil/${userSearched.username}`} className="nav-link d-flex">

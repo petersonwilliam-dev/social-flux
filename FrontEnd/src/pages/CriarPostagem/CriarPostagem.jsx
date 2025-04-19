@@ -7,7 +7,7 @@ import Toasts from "../../components/Toasts/Toasts"
 
 function CriarPostagem({user}) {
 
-    const {criarPostagem, message, setMessage} = usePostagem()
+    const {criarPostagem, message} = usePostagem()
 
     return (
         <div className="criar_postagem">
@@ -19,7 +19,7 @@ function CriarPostagem({user}) {
             </div>
             <div className="p-3 dark-m"> 
                 {message && (
-                    <Toasts msg={message.mensagem} type="danger" onClose={() => setMessage(null)}/>
+                    <Toasts msg={message}/>
                 )}
                 <FormCriarPostagem criarPostagem={criarPostagem} user={user}/>
             </div>

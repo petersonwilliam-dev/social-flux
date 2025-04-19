@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import "../../styles/Modal.css"
 
-function Modal({title, titleAction, action, colorText, setOberserDarkMode, id}) {
+function Modal({title, titleAction, action, colorText, setObserverDarkMode, id}) {
 
     useEffect(() => {
-        setOberserDarkMode(darkMode => !darkMode)
+        setObserverDarkMode(darkMode => !darkMode)
     }, [])
 
     return (

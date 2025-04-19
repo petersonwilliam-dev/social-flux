@@ -116,7 +116,10 @@ function useRelacao() {
             } catch (err) {
                 setMessage(err.response.data)
                 setInterval(() => setMessage(null), 10000)
+                return []
             }
+        } else {
+            return []
         }
     }
 
@@ -131,7 +134,7 @@ function useRelacao() {
             setMessage(err.response.data)
             setInterval(() => {
                 setMessage(null)
-            })
+            }, 10000)
         })
     }
 
@@ -152,11 +155,11 @@ function useRelacao() {
             setMessage(err.response.data)
             setInterval(() => {
                 setMessage(null)
-            })
+            }, 10000)
         })
     }
     
-    return {relacao, numeroSeguidores, numeroSeguidos, seguidores, seguidos, unacceptedRelationships, seekRelationship, getProfileUserRelationships, getCommomRelationships, createRelationship, removeRelationship, acceptRelationship, getUnacceptedRelationships}
+    return {relacao, numeroSeguidores, numeroSeguidos, seguidores, seguidos, unacceptedRelationships, seekRelationship, getProfileUserRelationships, getCommomRelationships, createRelationship, removeRelationship, acceptRelationship, getUnacceptedRelationships, message}
 }
 
 export default useRelacao

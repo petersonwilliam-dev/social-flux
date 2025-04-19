@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom"
-import ModalExcluirPostagem from "../Modals/ModalExcluirPostagem"
-import { useEffect } from "react"
 
 function DropdownActions() {
 

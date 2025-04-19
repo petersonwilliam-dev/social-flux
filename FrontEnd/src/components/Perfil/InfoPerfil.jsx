@@ -5,7 +5,7 @@ import foto_default from "../../assets/img/profile_photo_default.png"
 import RelacoesEmComum from "../Relacao/RelacoesEmComum"
 import ActionsProfile from "./ActionsProfile"
 
-function InfoPerfil({userProfile, user,numeroSeguidores, numeroSeguidos, relacao, createRelationship, removeRelationShip}) {
+function InfoPerfil({userProfile, user,numeroSeguidores, numeroSeguidos, relacao, createRelationship, removeRelationShip, setObserverDarkMode}) {
     
     return (
         <div className="row g-0 px-2 px-lg-5 py-3">
@@ -35,7 +35,7 @@ function InfoPerfil({userProfile, user,numeroSeguidores, numeroSeguidos, relacao
                     )}
                 </div>
                 {userProfile != user && (
-                    <RelacoesEmComum user={user} profileUser={userProfile} />
+                    <RelacoesEmComum user={user} profileUser={userProfile} setObserverDarkMode={setObserverDarkMode}/>
                 )}
             </div>
             <div className="d-flex justify-content-end">

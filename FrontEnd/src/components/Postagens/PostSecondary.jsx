@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { calcTempPost } from "../../assets/util/convertDates"
-import token from "../../config/getToken"
 
 import perfilDefault from '../../assets/img/profile_photo_default.png'
 import Comentario from '../ActionsPostagem/Comentario'
@@ -14,13 +13,14 @@ import API_BASE_URL from "../../config/apiConfig"
 import "../../styles/PostSecondary.css"
 import DropdownActions from "./DropdownActions"
 import ModalExcluirPostagem from "../Modals/ModalExcluirPostagem"
+import Toasts from "../Toasts/Toasts"
 
 
 function PostSecondary({postagem, usuarioLogado, excluirPostagem, idReferencia, observerDarkMode, setObserverDarkMode}) {
 
     const [mostrarFormularioComentar, setMostrarFormularioCometar] = useState(false)
-    const {buscarNumeroRespostas, criarPostagem} = usePostagem(token)
-    const {buscarNumeroCurtidas} = useCurtida(token)
+    const {buscarNumeroRespostas, criarPostagem, message} = usePostagem()
+    const {buscarNumeroCurtidas, message: messageCurtida} = useCurtida()
     const [numeroRespostas, setNumeroRespostas] = useState(0)
     const [numeroCurtidas, setNumeroCurtidas] = useState(0)
 
@@ -45,6 +45,9 @@ function PostSecondary({postagem, usuarioLogado, excluirPostagem, idReferencia, 
 
     return (
         <>
+            {message || messageCurtida && (
+                <Toasts mensagem={message ? message : messageCurtida}/>
+            )}
             {postagem.postagem && idReferencia && idReferencia !== postagem.postagem.id && (
                 <PostSecondary postagem={postagem.postagem} usuarioLogado={usuarioLogado} excluirPostagem={excluirPostagem} idReferencia={idReferencia} observerDarkMode={observerDarkMode} setObserverDarkMode={setObserverDarkMode}/>
             )}
@@ -97,7 +100,7 @@ function PostSecondary({postagem, usuarioLogado, excluirPostagem, idReferencia, 
                         </Link>
                         <div className="actions mt-1 d-flex">
                             <div className="likes d-flex me-2">
-                                <Curtida user={usuarioLogado} postagem={postagem} setNumeroCurtidas={setNumeroCurtidas} token={token}/> {numeroCurtidas}
+                                <Curtida user={usuarioLogado} postagem={postagem} setNumeroCurtidas={setNumeroCurtidas} /> {numeroCurtidas}
                             </div>
                             <div className="coments d-flex mx-2">
                                 <Comentario showFormularioComentar={showFormularioComentar} />{numeroRespostas}

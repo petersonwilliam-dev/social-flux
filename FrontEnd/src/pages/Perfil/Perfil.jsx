@@ -19,14 +19,15 @@ import UserInteractions from './UserInteractions.jsx'
 import UserMedia from './UserMedia.jsx'
 import ButtonBack from '../../components/ButtonBack/ButtonBack.jsx'
 import { useEffect } from 'react'
+import Toasts from '../../components/Toasts/Toasts.jsx'
 
 
 function Perfil({observerDarkMode, setObserverDarkMode, user}) {
 
     const {username} = useParams()
 
-    const {userProfile, message, setMessage} = useUserProfile(username)
-    const {relacao, numeroSeguidores, numeroSeguidos, seguidores, seguidos, seekRelationship, getProfileUserRelationships, getCommomRelationships, createRelationship, removeRelationship} = useRelacao()
+    const {userProfile, message} = useUserProfile(username)
+    const {relacao, numeroSeguidores, numeroSeguidos, seguidores, seguidos, seekRelationship, getProfileUserRelationships, getCommomRelationships, createRelationship, removeRelationship, message : messageRelacao} = useRelacao()
     const {showUserPosts, showUserInterations, showUserMedia, toggleUserPosts, toggleUserInterations, toggleUserMedia} = useTogglePerfilContent()
  
     function renderProfileContent() {
@@ -46,12 +47,15 @@ function Perfil({observerDarkMode, setObserverDarkMode, user}) {
     return (
         <>
             {userProfile ? (
-                <div className="perfil ">
+                <div className="perfil">
+                    {message || messageRelacao && (
+                        <Toasts mensagem={message ? message : messageRelacao} />
+                    )}
                     <div className="w-100 d-flex justify-content-between">
                         <ButtonBack />
                         <Link to="/settings" className="d-flex d-lg-none icon-settings"><ion-icon name="settings-outline"></ion-icon></Link>
                     </div>
-                    <InfoPerfil userProfile={userProfile} user={user} numeroSeguidores={numeroSeguidores} numeroSeguidos={numeroSeguidos} relacao={relacao} removeRelationShip={removeRelationship} createRelationship={createRelationship} />
+                    <InfoPerfil userProfile={userProfile} user={user} numeroSeguidores={numeroSeguidores} numeroSeguidos={numeroSeguidos} relacao={relacao} removeRelationShip={removeRelationship} createRelationship={createRelationship} setObserverDarkMode={setObserverDarkMode}/>
 
                         <ProfileMenu showUserPosts={showUserPosts} showUserInteractions={showUserInterations} showUserMedia={showUserMedia}/>
                     <hr />
@@ -90,9 +94,9 @@ function Perfil({observerDarkMode, setObserverDarkMode, user}) {
             )}
             {userProfile && (
                 <div>
-                    <ModalAction action={removeRelationship} title={`Deseja deixar de seguir @${userProfile.username}`} titleAction="Deixar de seguir" colorText="red" setOberserDarkMode={setObserverDarkMode} id="modalDeixarDeSeguir"/>
-                    <ModalListUsers id="seguidores" title="Seguidores" msgDefault="Não há seguidores" users={seguidores} setOberserDarkMode={setObserverDarkMode}/>
-                    <ModalListUsers id="seguidos" title="Seguidos" msgDefault="Não há seguidos" users={seguidos} setOberserDarkMode={setObserverDarkMode}/>
+                    <ModalAction action={removeRelationship} title={`Deseja deixar de seguir @${userProfile.username}`} titleAction="Deixar de seguir" colorText="red" setObserverDarkMode={setObserverDarkMode} id="modalDeixarDeSeguir"/>
+                    <ModalListUsers id="seguidores" title="Seguidores" msgDefault="Não há seguidores" users={seguidores} setObserverDarkMode={setObserverDarkMode} />
+                    <ModalListUsers id="seguidos" title="Seguidos" msgDefault="Não há seguidos" users={seguidos} setObserverDarkMode={setObserverDarkMode}/>
                 </div>
             )}
         </>

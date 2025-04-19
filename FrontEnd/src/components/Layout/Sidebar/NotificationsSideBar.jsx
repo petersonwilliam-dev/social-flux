@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom"
 import useUserNotifications from "../../../hooks/useUserNotifications"
 import ListNotifications from "../../Notifications/ListNotifications"
+import Toasts from "../../Toasts/Toasts"
 
 function NotificationsSidebar({showSidebarMenu, user}) {
 
-    const {userNotifications, viewNotifications} = useUserNotifications(user)
+    const {userNotifications, viewNotifications, message} = useUserNotifications(user)
 
     return (
         <div className="mb-auto">
+            {message && (
+                <Toasts mensagem={message} />
+            )}
             <div className="text-start w-100 mb-4 ps-3">
                 <Link onClick={() => {
                     viewNotifications()

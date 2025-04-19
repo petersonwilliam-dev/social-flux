@@ -16,12 +16,13 @@ import useCurtida from "../../hooks/useCurtida"
 import FormComentar from "../Forms/FormComentar"
 import DropdownActions from "./DropdownActions"
 import ModalExcluirPostagem from "../Modals/ModalExcluirPostagem"
+import Toasts from "../Toasts/Toasts"
 
 function Postagem({postagem, user, excluiPostagem, observerDarkMode, setObserverDarkMode}) {
 
     const [mostrarFormularioComentar, setMostrarFormularioCometar] = useState(false)
-    const {buscarNumeroRespostas, criarPostagem, error} = usePostagem(token)
-    const {buscarNumeroCurtidas} = useCurtida(token)
+    const {buscarNumeroRespostas, criarPostagem, message} = usePostagem()
+    const {buscarNumeroCurtidas, message: messageCurtida} = useCurtida()
     const [numeroRespostas, setNumeroRespostas] = useState(0)
     const [numeroCurtidas, setNumeroCurtidas] = useState(0)
 
@@ -46,6 +47,9 @@ function Postagem({postagem, user, excluiPostagem, observerDarkMode, setObserver
 
     return (
         <>
+            {message || messageCurtida && (
+                <Toasts mensagem={message ? message : messageCurtida}/>
+            )}
             {postagem.postagem && (
                 <PostSecondary postagem={postagem.postagem} usuarioLogado={user} excluirPostagem={excluiPostagem} idReferencia={postagem.id} observerDarkMode={observerDarkMode} setObserverDarkMode={setObserverDarkMode}/>
             )}

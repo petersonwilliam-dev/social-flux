@@ -4,6 +4,8 @@ import axios from "axios";
 import token from "../config/getToken";
 
 function useUserNotifications(user) {
+
+    const [message, setMessage] = useState(null)
     const [userNotifications, setUserNotifications] = useState([])
     const [notificationsNotSeen, setNotificationsNotSeen] = useState(0)
 
@@ -14,7 +16,11 @@ function useUserNotifications(user) {
             }
         })
         .then(response => setUserNotifications(response.data))
-        .catch(err => console.log(err))
+        .catch(err => {
+            setMessage(err.response.data)
+            setInterval(() => setMessage(null), 10000)
+            setUserNotifications([])
+        })
 
         axios.get(`${API_BASE_URL}/notification?userId=${user.id}&count=True`, {
             headers: {
@@ -22,20 +28,34 @@ function useUserNotifications(user) {
             }
         })
         .then(response => setNotificationsNotSeen(response.data))
-        .catch(err => console.log(err))
+        .catch(err => {
+            setMessage(err.response.data)
+            setInterval(() => {
+                setMessage(null)
+            }, 10000)
+            setNotificationsNotSeen(0)
+        })
 
     }, [user])
 
     function viewNotifications() {
-        axios.patch(`${API_BASE_URL}/notification/${user.id}`, {
+        axios.patch(`${API_BASE_URL}/notification/${user.id}`, null,{
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
-        .catch(err => console.log(err))
+        .then(() => {
+            console.log("Deu certo")
+        })
+        .catch(err => {
+            setMessage(err.response.data)
+            setInterval(() => {
+                setMessage(null)
+            }, 10000)
+        })
     }
 
-    return {userNotifications, notificationsNotSeen,setNotificationsNotSeen, viewNotifications}
+    return {userNotifications, notificationsNotSeen,setNotificationsNotSeen, viewNotifications, message}
 }
 
 export default useUserNotifications

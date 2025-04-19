@@ -4,10 +4,13 @@ import NoContent from "../../components/NotContent/NotContent"
 
 function UserPosts({userProfile, user, observerDarkMode, setObserverDarkMode}) {
 
-    const {postagensUsuario, setPostagensUsuario} = useUserPosts(userProfile)
+    const {postagensUsuario, setPostagensUsuario, message} = useUserPosts(userProfile)
 
     return (
         <>
+            {message && (
+                <Toasts mensagem={message}/>
+            )}
             {postagensUsuario.length > 0 ? (
                 <ListarPostagens postagens={postagensUsuario} usuarioLogado={user} setPostagens={setPostagensUsuario} classe="postagem-main" observerDarkMode={observerDarkMode} setObserverDarkMode={setObserverDarkMode}/>
             ) : (

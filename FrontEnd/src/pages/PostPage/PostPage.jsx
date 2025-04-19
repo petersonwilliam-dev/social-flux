@@ -5,13 +5,14 @@ import usePostagem from "../../hooks/usePostagem"
 import Postagem from "../../components/Postagens/Postagem"
 import ListarPostagens from "../../components/Postagens/ListarPostagens"
 import ButtonBack from '../../components/ButtonBack/ButtonBack'
+import Toasts from "../../components/Toasts/Toasts"
 
 function PostPage({observerDarkMode, setObserverDarkMode, user, }) {
 
     const {id} = useParams()
     const [postagem, setPostagem] = useState(null)
     const [respostas, setRespostas] = useState([])
-    const {buscarPostagem, removerPostagem, buscarRespostas} = usePostagem()
+    const {buscarPostagem, removerPostagem, buscarRespostas, message} = usePostagem()
 
     useEffect(() => {
 
@@ -31,6 +32,9 @@ function PostPage({observerDarkMode, setObserverDarkMode, user, }) {
 
     return (
         <div className="postPage">
+            {message && (
+                <Toasts mensagem={message} />
+            )}
             <div className="w-100 my-2">
                 <ButtonBack />
             </div>

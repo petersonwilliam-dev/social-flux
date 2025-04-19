@@ -8,7 +8,6 @@ import token from "../config/getToken"
 function usePostagem() {
 
     const navigate = useNavigate()
-    const [error, setError] = useState(null)
     const [message, setMessage] = useState(null)
     const [homePosts, setHomePosts] = useState([])
 
@@ -51,8 +50,8 @@ function usePostagem() {
         })
         .catch(err => {
             setMessage(err.response.data)
-            setMessage(() => {
-                setError(null)
+            setInterval(() => {
+                setMessage(null)
             }, 10000)
         })
     }
@@ -67,8 +66,8 @@ function usePostagem() {
             return response.data
         } catch (err) {
             setMessage(err.response.data)
-            setMessage(() => {
-                setError(null)
+            setInterval(() => {
+                setMessage(null)
             }, 10000)
             return null
         }
@@ -85,8 +84,8 @@ function usePostagem() {
             return response.data.length
         } catch (err) {
             setMessage(err.response.data)
-            setMessage(() => {
-                setError(null)
+            setInterval(() => {
+                setMessage(null)
             }, 10000)
             return 0
         }
@@ -103,8 +102,8 @@ function usePostagem() {
             return response.data
         } catch (err) {
             setMessage(err.response.data)
-            setMessage(() => {
-                setError(null)
+            setInterval(() => {
+                setMessage(null)
             }, 10000)
             return []
         }
@@ -124,7 +123,7 @@ function usePostagem() {
         })
     }
 
-    return {criarPostagem, removerPostagem, buscarPostagem, buscarRespostas, buscarNumeroRespostas, buscarRespostas, getHomePosts, setMessage, setHomePosts,message, homePosts}
+    return {criarPostagem, removerPostagem, buscarPostagem, buscarRespostas, buscarNumeroRespostas, buscarRespostas, getHomePosts, setHomePosts, message, homePosts}
 }
 
 export default usePostagem

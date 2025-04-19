@@ -1,8 +1,11 @@
 import axios from "axios";
 import API_BASE_URL from "../config/apiConfig";
 import token from "../config/getToken";
+import { useState } from "react";
 
 function useUser() {
+
+    const [message, setMessage] = useState(null)
 
     function excluirUsuario(user) {
         axios.delete(`${API_BASE_URL}/usuarios/${user.id}`, {
@@ -14,10 +17,13 @@ function useUser() {
             localStorage.removeItem("token")
             window.location.reload()
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            setMessage(err.response.data)
+            setInterval(() => setMessage(null), 10000)
+        })
     }
 
-    return {excluirUsuario}
+    return {excluirUsuario, message}
 }
 
 export default useUser

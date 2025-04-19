@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import CardUsuarioSearch from "../../CardUsuarioSearch/CardUsuarioSearch"
 
-function SearchUsuario({showSidebarMenu, usuariosPesquisados, setSearch, search, user}) {
+function SearchUsuario({showSidebarMenu, usuariosPesquisados, setSearch, search, user, message}) {
     return (
         <div className="mb-auto">
             <div className="text-start w-100 mb-4 ps-3">

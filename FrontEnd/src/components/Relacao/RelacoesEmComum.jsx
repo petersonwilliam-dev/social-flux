@@ -4,11 +4,12 @@ import ModalListUsers from "../Modals/ModalListUsers"
 
 import { useState, useEffect } from "react"
 import useRelacao from "../../hooks/useRelacao"
+import Toasts from "../Toasts/Toasts"
 
-function RelacoesEmComum({user, profileUser}) {
+function RelacoesEmComum({user, profileUser, setObserverDarkMode}) {
 
     const [relacoesEmComum, setRelacoesEmComum] = useState([])
-    const {getCommomRelationships} = useRelacao()
+    const {getCommomRelationships, message} = useRelacao()
 
     useEffect(() => {
         const fetchRelacoes = async () => {
@@ -22,6 +23,9 @@ function RelacoesEmComum({user, profileUser}) {
 
     return (
         <div>
+            {message && (
+                <Toasts mensagem={message} />
+            )}
             {relacoesEmComum && relacoesEmComum.length > 0 && (
                 <div className="d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#relacoesEmComum" style={{cursor: 'pointer'}}>
                     <div className="fotos me-2">
@@ -43,7 +47,7 @@ function RelacoesEmComum({user, profileUser}) {
                     </div>
                 </div>
             )}
-            <ModalListUsers title="Relações em comum" msgDefault="Não há relações em comum" id="relacoesEmComum" users={relacoesEmComum}/>
+            <ModalListUsers title="Relações em comum" msgDefault="Não há relações em comum" id="relacoesEmComum" users={relacoesEmComum} setObserverDarkMode={setObserverDarkMode} />
         </div>
     )
 }

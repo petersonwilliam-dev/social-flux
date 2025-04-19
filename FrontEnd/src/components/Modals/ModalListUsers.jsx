@@ -2,8 +2,13 @@ import { Link } from "react-router-dom"
 import img from "../../assets/img/profile_photo_default.png"
 import "../../styles/Modal.css"
 import API_BASE_URL from "../../config/apiConfig"
+import { useEffect } from "react"
 
-function ModalListUsers({id, title, users, msgDefault}) {
+function ModalListUsers({id, title, users, msgDefault, setObserverDarkMode}) {
+
+    useEffect(() => {
+        setObserverDarkMode(darkMode => !darkMode)
+    }, [])
 
     return (
         <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

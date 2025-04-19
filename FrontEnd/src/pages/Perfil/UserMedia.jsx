@@ -4,10 +4,13 @@ import useUserPosts from "../../hooks/useUserPosts"
 
 function UserMedia({user, userProfile, observerDarkMode, setObserverDarkMode}) {
 
-    const {postagenMidiaUsuario, setPostagensMidiaUsuario} = useUserPosts(userProfile)
+    const {postagenMidiaUsuario, setPostagensMidiaUsuario, message} = useUserPosts(userProfile)
 
     return (
         <>
+            {message && (
+                <Toasts mensagem={message}/>
+            )}
             {postagenMidiaUsuario.length > 0 ? (
                 <ListarPostagens postagens={postagenMidiaUsuario} usuarioLogado={user} setPostagens={setPostagensMidiaUsuario} observerDarkMode={observerDarkMode} setObserverDarkMode={setObserverDarkMode} />
             ) : (

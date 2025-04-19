@@ -6,6 +6,7 @@ import token from "../config/getToken"
 function useSearchUsuario() {
 
     const [search, setSearch] = useState('')
+    const [message, setMessage] = useState(null)
     const [usuariosPesquisados, setUsuariosPesquisados] = useState([])
 
     useEffect(() => {
@@ -18,14 +19,18 @@ function useSearchUsuario() {
             .then(response => {
                 setUsuariosPesquisados(response.data)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                setMessage(err.response.data)
+                setInterval(() => setMessage(null), 10000)
+                setUsuariosPesquisados([])
+            })
         } else {
             setUsuariosPesquisados([])
         }
 
     }, [search])
 
-    return {setSearch, search, usuariosPesquisados}
+    return {setSearch, search, usuariosPesquisados, message}
 }
 
 export default useSearchUsuario

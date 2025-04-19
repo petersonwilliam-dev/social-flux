@@ -6,11 +6,12 @@ import { toggle } from "../../redux/reducer/darkmodeReducer"
 import useUser from "../../hooks/useUser"
 import ModalAction from "../../components/Modals/ModalAction"
 import useAuth from "../../hooks/useAuth"
+import Toasts from "../../components/Toasts/Toasts"
 
-function Settings({darkModeActivated, setObserverDarkMode, user}) {
+function Settings({darkModeActivated, setObserverDarkMode}) {
 
     const dispatch = useDispatch()
-    const {excluirUsuario} = useUser()
+    const {excluirUsuario, message} = useUser()
     const { logout } = useAuth()
 
     function darkMode() {
@@ -19,6 +20,9 @@ function Settings({darkModeActivated, setObserverDarkMode, user}) {
 
     return (
         <section className="settings">
+            {message && (
+                <Toasts mensagem={message}/>
+            )}
             <div className="w-100 my-2">
                 <ButtonBack />
             </div>
@@ -49,8 +53,8 @@ function Settings({darkModeActivated, setObserverDarkMode, user}) {
                     </div>
                 </div>
             </div>
-            <ModalAction id="modalLogout" title="Deseja sair?" action={logout} titleAction="Sair" colorText="red" setOberserDarkMode={setObserverDarkMode}/>
-            <ModalAction id="modalExcluirConta" title="Deseja excluir a conta?" action={excluirUsuario} titleAction="Excluir conta" colorText="red" setOberserDarkMode={setObserverDarkMode} />
+            <ModalAction id="modalLogout" title="Deseja sair?" action={logout} titleAction="Sair" colorText="red" setObserverDarkMode={setObserverDarkMode}/>
+            <ModalAction id="modalExcluirConta" title="Deseja excluir a conta?" action={excluirUsuario} titleAction="Excluir conta" colorText="red" setObserverDarkMode={setObserverDarkMode} />
         </section>
     )
 }

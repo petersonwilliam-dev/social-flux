@@ -128,6 +128,19 @@ public class UsuarioService {
         }
     }
 
+    public void excluirUsuario(Integer id) {
+        try {
+            if (usuarioDao.buscarPorId(id) != null) {
+                usuarioDao.excluirUsuario(id);
+            } else {
+                throw new IllegalArgumentException("Usuário não encontrado");
+            }
+        } catch (SQLException e) {
+            logger.error("Erro ao excluir usuário");
+            throw new RuntimeException();
+        }
+    }
+
     private Usuario resultSetToUsuarioComplete(ResultSet resultSet) throws SQLException {
         LocalDate data_criacao = resultSet.getDate("data_criacao").toLocalDate();
         LocalDate data_nascimento = resultSet.getDate("data_nascimento").toLocalDate();

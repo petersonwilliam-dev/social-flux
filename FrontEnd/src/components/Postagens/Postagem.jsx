@@ -47,7 +47,7 @@ function Postagem({postagem, user, excluiPostagem, observerDarkMode, setObserver
     return (
         <>
             {postagem.postagem && (
-                <PostSecondary token={token} postagem={postagem.postagem} usuarioLogado={user} excluirPostagem={excluiPostagem} idReferencia={postagem.id} observerDarkMode={observerDarkMode} setObserverDarkMode={setObserverDarkMode}/>
+                <PostSecondary postagem={postagem.postagem} usuarioLogado={user} excluirPostagem={excluiPostagem} idReferencia={postagem.id} observerDarkMode={observerDarkMode} setObserverDarkMode={setObserverDarkMode}/>
             )}
             <div className="post dark-m my-3" id={postagem.id}>
                 <div className="d-flex px-4">

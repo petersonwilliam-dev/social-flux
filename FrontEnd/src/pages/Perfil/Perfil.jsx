@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom'
 import useRelacao from "../../hooks/useRelacao.js"
 import useUserProfile from "../../hooks/useUserProfile.js"
 
-import ModalSeguidores from "../../components/Modals/ModalSeguidores.jsx"
-import ModalSeguidos from "../../components/Modals/ModalSeguidos.jsx"
-import ModalDeixarDeSeguir from "../../components/Modals/ModalDeixarDeSeguir.jsx"
+import ModalListUsers from "../../components/Modals/ModalListUsers.jsx"
+import ModalAction from "../../components/Modals/ModalAction.jsx"
 
 import NotFoundMessage from "../../components/NotFound/NotFoundMessage"
 import Loading from "../../components/Loading/Loading"
@@ -91,9 +90,9 @@ function Perfil({observerDarkMode, setObserverDarkMode, user}) {
             )}
             {userProfile && (
                 <div>
-                    <ModalDeixarDeSeguir removerRelacao={removeRelationship} userProfile={userProfile} setOberserDarkMode={setObserverDarkMode}/>
-                    <ModalSeguidores seguidores={seguidores}/>
-                    <ModalSeguidos seguidos={seguidos}/>
+                    <ModalAction action={removeRelationship} title={`Deseja deixar de seguir @${userProfile.username}`} titleAction="Deixar de seguir" colorText="red" setOberserDarkMode={setObserverDarkMode} id="modalDeixarDeSeguir"/>
+                    <ModalListUsers id="seguidores" title="Seguidores" msgDefault="Não há seguidores" users={seguidores} setOberserDarkMode={setObserverDarkMode}/>
+                    <ModalListUsers id="seguidos" title="Seguidos" msgDefault="Não há seguidos" users={seguidos} setOberserDarkMode={setObserverDarkMode}/>
                 </div>
             )}
         </>

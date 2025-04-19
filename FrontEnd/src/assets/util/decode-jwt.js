@@ -15,6 +15,7 @@ function decodeJwt(jwt) {
         }
 
         if (jwtDecoded.exp && jwtDecoded.exp * 1000 < Date.now()) {
+            console.log("Token expirado!");
             return null;
         }
 

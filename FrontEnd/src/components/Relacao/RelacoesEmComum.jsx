@@ -1,6 +1,6 @@
 import API_BASE_URL from "../../config/apiConfig"
 import foto from "../../assets/img/profile_photo_default.png"
-import ModalRelacoesEmComum from "../Modals/ModalRelacoesEmComum"
+import ModalListUsers from "../Modals/ModalListUsers"
 
 import { useState, useEffect } from "react"
 import useRelacao from "../../hooks/useRelacao"
@@ -25,7 +25,7 @@ function RelacoesEmComum({user, profileUser}) {
             {relacoesEmComum && relacoesEmComum.length > 0 && (
                 <div className="d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#relacoesEmComum" style={{cursor: 'pointer'}}>
                     <div className="fotos me-2">
-                        {relacoesEmComum.map((usuario, index) => (
+                        {relacoesEmComum.slice(0, 3).map((usuario, index) => (
                             <div key={index}>
                                 {usuario.foto_perfil ? (
                                     <img key={index} src={`${API_BASE_URL}/img/${usuario.id}/${usuario.foto_perfil}`} alt="" className="rounded-circle foto-relacao-em-comum"/>
@@ -43,7 +43,7 @@ function RelacoesEmComum({user, profileUser}) {
                     </div>
                 </div>
             )}
-            <ModalRelacoesEmComum relacoesEmComum={relacoesEmComum} />
+            <ModalListUsers title="Relações em comum" msgDefault="Não há relações em comum" id="relacoesEmComum" users={relacoesEmComum}/>
         </div>
     )
 }

@@ -126,4 +126,15 @@ public class UsuarioDao {
         if (resultSet.next()) return resultSet;
         return null;
     }
+
+    public void excluirUsuario(Integer id) throws SQLException {
+
+        String sql = "DELETE FROM usuario WHERE id = ?";
+
+        PreparedStatement preparedStatement = connectionSQL.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+
+        preparedStatement.execute();
+        preparedStatement.close();
+    }
 }

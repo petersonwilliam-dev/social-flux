@@ -132,6 +132,7 @@ public class App {
         app.patch("/api/usuarios/{id}", UsuarioController::atualizarDadosPerfil);
         app.get("/api/usuarios/search", UsuarioController::buscarUsuariosPesquisados);
         app.patch("/api/img/usuarios/{id}", UsuarioController::atualizarFoto);
+        app.delete("/api/usuarios/{id}", UsuarioController::excluirUsuario);
 
 
         // AUTH

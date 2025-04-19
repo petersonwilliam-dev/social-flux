@@ -12,6 +12,7 @@ import io.javalin.http.Context;
 import io.javalin.http.UploadedFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -113,6 +114,30 @@ public class UsuarioController {
         }
     }
 
+    public static void excluirUsuario(Context ctx) {
 
+        AuthMiddleware.AuthValidate(ctx);
+
+        UsuarioService usuarioService = ctx.appData(Keys.USUARIO_SERVICE.key());
+
+        try {
+            Integer id = Integer.parseInt(ctx.pathParam("id"));
+            String senha = ctx.formParam("senha");
+            Usuario usuario = usuarioService.buscarPorId(id);
+            if (usuario != null) {
+                if (BCrypt.checkpw(senha, usuario.getSenha())) {
+                    usuarioService.excluirUsuario(id);
+                    ctx.status(200).json(new Mensagem("conta removida com sucesso!", false));
+                } else {
+                    ctx.status(400).json(new Mensagem("Senha incorreta", false));
+                }
+            } else {
+                ctx.status(404).json(new Mensagem("Usuário não encontrado", false));
+            }
+            ctx.status(200).json(new Mensagem("Conta excluída", true));
+        } catch (NumberFormatException e) {
+            ctx.status(400).json(new Mensagem("ID inválido!", false));
+        }
+    }
 
 }

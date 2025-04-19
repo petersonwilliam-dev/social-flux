@@ -36,9 +36,8 @@ function FormSignup({toggleForm, adicionarUsuario, erro}) {
                     confirmarSenha: ""
                 }}
                 validationSchema={validationSchema}
-                onSubmit={(values, {setSubmitting}) => {
+                onSubmit={(values) => {
                     adicionarUsuario(values)
-                    setSubmitting(false)
                 }}
                 >
                     {({isSubmitting}) => (
@@ -98,7 +97,7 @@ function FormSignup({toggleForm, adicionarUsuario, erro}) {
                                 </div>
                             </div>
         
-                            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Enviar</button>
+                            <button type="submit" className="btn btn-primary">Enviar</button>
                         </Form>
                     )}
                 </Formik>

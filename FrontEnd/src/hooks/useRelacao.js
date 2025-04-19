@@ -42,7 +42,7 @@ function useRelacao() {
                 }
             })
             .then(response => {
-                setSeguidos(response.data)
+                setSeguidos(response.data.map(relacao => relacao.seguido))
                 setNumeroSeguidos(response.data.length)
             })
             .catch(err => {
@@ -56,7 +56,7 @@ function useRelacao() {
                 }
             })
             .then(response => {
-                setSeguidores(response.data)
+                setSeguidores(response.data.map(relacao => relacao.seguidor))
                 setNumeroSeguidores(response.data.length)
             })
             .catch(err => {

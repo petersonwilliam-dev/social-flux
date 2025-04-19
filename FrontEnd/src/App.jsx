@@ -34,7 +34,7 @@ function App() {
         <Route path="/postagem/:id" element={<ProtectedRoute  element={<PostPage  observerDarkMode={observerDarkMode} setObserverDarkMode={setObserverDarkMode} />} />}/>
         <Route path="/search" element={<ProtectedRoute  element={<SearchUser  />}/>} />
         <Route path="/notifications" element={<ProtectedRoute  element={<Notifications  />}/>} />
-        <Route path="/settings" element={<ProtectedRoute  element={<Settings   darkModeActivated={darkModeActivated}/>}/>} />
+        <Route path="/settings" element={<ProtectedRoute  element={<Settings darkModeActivated={darkModeActivated} setObserverDarkMode={setObserverDarkMode} />}/>} />
       </Routes>
     </div>
   )
